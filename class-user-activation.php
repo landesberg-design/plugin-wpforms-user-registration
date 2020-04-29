@@ -5,12 +5,9 @@
  *
  * This has been adapted from the WP Approve Users plugin, by Konstantin Obenland.
  *
- * @link       https://github.com/obenland/wp-approve-user
- * @package    WPFormsUserRegistration
- * @author     WPForms
- * @since      1.0.0
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2016, WPForms LLC
+ * @link https://github.com/obenland/wp-approve-user
+ *
+ * @since 1.0.0
  */
 class WPForms_User_Activation {
 
@@ -167,7 +164,7 @@ class WPForms_User_Activation {
 	 *
 	 * @since  1.0.0
 	 *
-	 * @param  array $views
+	 * @param array $views An array of available list table views.
 	 *
 	 * @return array
 	 */
@@ -252,7 +249,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Updates user_meta to approve user.
+	 * Update user_meta to approve user.
 	 *
 	 * @since 1.0.0
 	 */
@@ -264,7 +261,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Updates user_meta in bulk to approve user.
+	 * Update user_meta in bulk to approve user.
 	 *
 	 * @since 1.0.0
 	 */
@@ -277,7 +274,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Updates user_meta to unapprove user.
+	 * Update user_meta to unapprove user.
 	 *
 	 * @since 1.0.0
 	 */
@@ -289,7 +286,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Updates user_meta in bulk to unapprove user.
+	 * Update user_meta in bulk to unapprove user.
 	 *
 	 * @since 1.0.0
 	 */
@@ -302,7 +299,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Adds the update message to the admin notices queue.
+	 * Add the update message to the admin notices queue.
 	 *
 	 * @since 1.0.0
 	 */
@@ -353,7 +350,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Checks whether the user is approved. Throws error if not.
+	 * Check whether the user is approved. Throws error if not.
 	 *
 	 * @since 1.0.0
 	 *
@@ -387,7 +384,7 @@ class WPForms_User_Activation {
 	 **********************/
 
 	/**
-	 * Updates user_meta to approve user.
+	 * Update user_meta to approve user.
 	 *
 	 * @since 1.0.0
 	 */
@@ -437,7 +434,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Updates user_meta to unapprove user.
+	 * Update user_meta to unapprove user.
 	 *
 	 * @since 1.0.0
 	 */
@@ -473,7 +470,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Checks permissions and assembles User IDs.
+	 * Check permissions and assembles User IDs.
 	 *
 	 * @since 1.0.0
 	 *
@@ -502,7 +499,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Sets the role context on bulk actions.
+	 * Set the role context on bulk actions.
 	 *
 	 * On bulk actions the role parameter is not passed, since we're using a form
 	 * to submit information. The information is only available through the
@@ -527,7 +524,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Returns the current role.
+	 * Return the current role.
 	 *
 	 * If the user list is in the context of a specific role, this function makes
 	 * sure that the requested role is valid. By returning `false` otherwise, we

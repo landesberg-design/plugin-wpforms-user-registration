@@ -3,11 +3,7 @@
 /**
  * Login form.
  *
- * @package    WPFormsUserRegistration
- * @author     WPForms
- * @since      1.0.0
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2016, WPForms LLC
+ * @since 1.0.0
  */
 class WPForms_User_Login {
 

@@ -3,11 +3,7 @@
 /**
  * Registration form.
  *
- * @package    WPFormsUserRegistration
- * @author     WPForms
- * @since      1.0.0
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2016, WPForms LLC
+ * @since 1.0.0
  */
 class WPForms_User_Registration {
 
@@ -34,6 +30,7 @@ class WPForms_User_Registration {
 		add_filter( 'wpforms_builder_settings_sections', array( $this, 'settings_register' ), 20, 2 );
 		add_action( 'wpforms_form_settings_panel_content', array( $this, 'settings_content' ), 20, 2 );
 		add_filter( 'wpforms_process_after_filter', array( $this, 'remove_password_value' ), 10, 3 );
+		add_action( 'wpforms_user_registered', array( $this, 'post_submissions_current_user' ), 10, 4 );
 	}
 
 	/**
@@ -594,6 +591,31 @@ class WPForms_User_Registration {
 		}
 
 		return $fields;
+	}
+
+	/**
+	 * Integration with Post Submissions add-on.
+	 * Sets newly registered user as the author of the post.
+	 *
+	 * @since 1.0.1
+	 *
+	 * @param array $user_id   User ID.
+	 * @param array $fields    Fields.
+	 * @param array $form_data Form data.
+	 * @param array $userdata  Userdata.
+	 */
+	public function post_submissions_current_user( $user_id, $fields, $form_data, $userdata ) {
+		add_filter(
+			'wpforms_post_submissions_post_args',
+			function( $post_args, $form_data, $fields ) use ( $user_id ) {
+				if ( ! empty( $form_data['settings']['post_submissions_author'] ) && 'current_user' === $form_data['settings']['post_submissions_author'] ) {
+					$post_args['post_author'] = $user_id;
+				}
+				return $post_args;
+			},
+			10,
+			3
+		);
 	}
 }
 

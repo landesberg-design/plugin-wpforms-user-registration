@@ -1,4 +1,4 @@
-# Copyright (C) 2019 WPForms User Registration
+# Copyright (C) 2020 WPForms User Registration
 # This file is distributed under the same license as the WPForms User Registration package.
 msgid ""
 msgstr ""
@@ -14,208 +14,208 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: class-user-activation.php:159, class-user-activation.php:231
+#: class-user-activation.php:156, class-user-activation.php:228
 msgid "Approve"
 msgstr ""
 
-#: class-user-activation.php:160, class-user-activation.php:247
+#: class-user-activation.php:157, class-user-activation.php:244
 msgid "Unapprove"
 msgstr ""
 
-#: class-user-activation.php:192
+#: class-user-activation.php:189
 msgid "Unapproved"
 msgstr ""
 
 #. translators: %s - number of users.
-#: class-user-activation.php:320
+#: class-user-activation.php:317
 msgid "%s user approved."
 msgid_plural "%s users approved."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s - number of users.
-#: class-user-activation.php:325
+#: class-user-activation.php:322
 msgid "%s user unapproved."
 msgid_plural "%s users unapproved."
 msgstr[0] ""
 msgstr[1] ""
 
-#: class-user-activation.php:374
+#: class-user-activation.php:371
 msgid "<strong>ERROR:</strong> Your account must be activated before you can login."
 msgstr ""
 
-#: class-user-activation.php:493
+#: class-user-activation.php:490
 msgid "You can&#8217;t unapprove users."
 msgstr ""
 
-#: class-user-login-template.php:20
+#: class-user-login-template.php:16
 msgid "User Login Form"
 msgstr ""
 
-#: class-user-login-template.php:22
+#: class-user-login-template.php:18
 msgid "Allow your users to easily login to your site with their username and password."
 msgstr ""
 
-#: class-user-login-template.php:33
+#: class-user-login-template.php:29
 msgid "Username or Email"
 msgstr ""
 
-#: class-user-login-template.php:44, class-user-registration-template.php:62, class-user-registration.php:415
+#: class-user-login-template.php:40, class-user-registration-template.php:58, class-user-registration.php:412
 msgid "Password"
 msgstr ""
 
-#: class-user-login.php:75
+#: class-user-login.php:71
 msgid "Hide the form if a user is already logged in"
 msgstr ""
 
-#: class-user-registration-template.php:21
+#: class-user-registration-template.php:17
 msgid "User Registration Form"
 msgstr ""
 
-#: class-user-registration-template.php:23
+#: class-user-registration-template.php:19
 msgid "Create customized WordPress user registration form and add them anywhere on your website."
 msgstr ""
 
-#: class-user-registration-template.php:28
+#: class-user-registration-template.php:24
 msgid "Don&#39;t Forget"
 msgstr ""
 
-#: class-user-registration-template.php:29
+#: class-user-registration-template.php:25
 msgid "Additional user registration options are available in the settings panel."
 msgstr ""
 
-#: class-user-registration-template.php:37, class-user-registration.php:402
+#: class-user-registration-template.php:33, class-user-registration.php:399
 msgid "Name"
 msgstr ""
 
-#: class-user-registration-template.php:44
+#: class-user-registration-template.php:40
 msgid "Username"
 msgstr ""
 
-#: class-user-registration-template.php:51
+#: class-user-registration-template.php:47
 msgid "Email"
 msgstr ""
 
-#: class-user-registration-template.php:69
+#: class-user-registration-template.php:65
 msgid "Short Bio"
 msgstr ""
 
-#: class-user-registration-template.php:70
+#: class-user-registration-template.php:66
 msgid "Share a little information about yourself."
 msgstr ""
 
-#: class-user-registration.php:121
+#: class-user-registration.php:118
 msgid "Email address is required."
 msgstr ""
 
-#: class-user-registration.php:133
+#: class-user-registration.php:130
 msgid "A user with that username already exists."
 msgstr ""
 
-#: class-user-registration.php:140
+#: class-user-registration.php:137
 msgid "A user with that email already exists."
 msgstr ""
 
-#: class-user-registration.php:270, class-user-registration.php:309
+#: class-user-registration.php:267, class-user-registration.php:306
 msgid "(Activation Required)"
 msgstr ""
 
-#: class-user-registration.php:271
+#: class-user-registration.php:268
 msgid "Account activation is required before the user can login."
 msgstr ""
 
-#: class-user-registration.php:274
+#: class-user-registration.php:271
 msgid "The user has been emailed a link to activate their account."
 msgstr ""
 
-#: class-user-registration.php:276
+#: class-user-registration.php:273
 msgid "You must manually activate their account."
 msgstr ""
 
-#: class-user-registration.php:316
+#: class-user-registration.php:313
 msgid "IMPORTANT: You must activate your account before you can login. Please visit the link below."
 msgstr ""
 
-#: class-user-registration.php:319
+#: class-user-registration.php:316
 msgid "Site administrator must activate your account before you can login."
 msgstr ""
 
-#: class-user-registration.php:353, class-user-registration.php:376
+#: class-user-registration.php:350, class-user-registration.php:373
 msgid "User Registration"
 msgstr ""
 
-#: class-user-registration.php:387
+#: class-user-registration.php:384
 msgid "User Name"
 msgstr ""
 
-#: class-user-registration.php:390, class-user-registration.php:405, class-user-registration.php:431, class-user-registration.php:444, class-user-registration.php:549
+#: class-user-registration.php:387, class-user-registration.php:402, class-user-registration.php:428, class-user-registration.php:441, class-user-registration.php:546
 msgid "--- Select Field ---"
 msgstr ""
 
-#: class-user-registration.php:391
+#: class-user-registration.php:388
 msgid "If a username is not set or provided, it will become the user's email address"
 msgstr ""
 
-#: class-user-registration.php:418
+#: class-user-registration.php:415
 msgid "Auto generate"
 msgstr ""
 
-#: class-user-registration.php:428
+#: class-user-registration.php:425
 msgid "Website"
 msgstr ""
 
-#: class-user-registration.php:441
+#: class-user-registration.php:438
 msgid "Biographical Info"
 msgstr ""
 
-#: class-user-registration.php:459
+#: class-user-registration.php:456
 msgid "User Role"
 msgstr ""
 
-#: class-user-registration.php:472
+#: class-user-registration.php:469
 msgid "Send email to the user containing account information"
 msgstr ""
 
-#: class-user-registration.php:481
+#: class-user-registration.php:478
 msgid "Send email to the admin"
 msgstr ""
 
-#: class-user-registration.php:490
+#: class-user-registration.php:487
 msgid "Enable user activation"
 msgstr ""
 
-#: class-user-registration.php:499
+#: class-user-registration.php:496
 msgid "User Activation Method"
 msgstr ""
 
-#: class-user-registration.php:503
+#: class-user-registration.php:500
 msgid "User Email"
 msgstr ""
 
-#: class-user-registration.php:504
+#: class-user-registration.php:501
 msgid "Manual Approval"
 msgstr ""
 
-#: class-user-registration.php:506
+#: class-user-registration.php:503
 msgid "User Email method sends an email to the user with a link to activate their account. Manual Approval requires site admin to approve account."
 msgstr ""
 
-#: class-user-registration.php:521
+#: class-user-registration.php:518
 msgid "User Activation Confirmation Page"
 msgstr ""
 
-#: class-user-registration.php:523
+#: class-user-registration.php:520
 msgid "Home page"
 msgstr ""
 
-#: class-user-registration.php:525
+#: class-user-registration.php:522
 msgid "Select the page to show the user after they activate their account."
 msgstr ""
 
-#: class-user-registration.php:531
+#: class-user-registration.php:528
 msgid "Custom User Meta"
 msgstr ""
 
-#: class-user-registration.php:543
+#: class-user-registration.php:540
 msgid "Enter meta key..."
 msgstr ""

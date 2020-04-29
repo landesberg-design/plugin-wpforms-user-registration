@@ -5,7 +5,7 @@
  * Description: User Registration and Login forms with WPForms.
  * Author:      WPForms
  * Author URI:  https://wpforms.com
- * Version:     1.3.0
+ * Version:     1.3.1
  * Text Domain: wpforms-user-registration
  * Domain Path: languages
  *
@@ -21,11 +21,6 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with WPForms. If not, see <http://www.gnu.org/licenses/>.
- *
- * @package    WPFormsUserRegistration
- * @since      1.0.0
- * @license    GPL-2.0+
- * @copyright  Copyright (c) 2016, WP Forms LLC
  */
 
 // Exit if accessed directly.
@@ -34,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin version.
-define( 'WPFORMS_USER_REGISTRATION_VERSION', '1.3.0' );
+define( 'WPFORMS_USER_REGISTRATION_VERSION', '1.3.1' );
 
 /**
  * Load the classes.
