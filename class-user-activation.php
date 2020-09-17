@@ -113,7 +113,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Resets the user query to handle request for unapproved users only.
+	 * Reset the user query to handle request for unapproved users only.
 	 *
 	 * @since 1.0.0
 	 *
@@ -135,7 +135,7 @@ class WPForms_User_Activation {
 	}
 
 	/**
-	 * Enqueues the script for users table.
+	 * Enqueue the script for users table.
 	 *
 	 * @since 1.0.0
 	 */

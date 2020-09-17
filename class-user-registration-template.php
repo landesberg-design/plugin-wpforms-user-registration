@@ -68,7 +68,7 @@ class WPForms_Template_User_Registration extends WPForms_Template {
 				),
 			),
 			'settings' => array(
-				'honeypot'                    => '1',
+				'antispam'                    => '1',
 				'confirmation_message_scroll' => '1',
 				'registration_username'       => '2',
 				'registration_name'           => '1',
@@ -91,7 +91,7 @@ class WPForms_Template_User_Registration extends WPForms_Template {
 	 *
 	 * @param array $form_data
 	 *
-	 * @return boolean
+	 * @return bool
 	 */
 	public function template_modal_conditional( $form_data ) {
 

@@ -60,7 +60,7 @@ msgstr ""
 msgid "Username or Email"
 msgstr ""
 
-#: class-user-login-template.php:40, class-user-registration-template.php:58, class-user-registration.php:412
+#: class-user-login-template.php:40, class-user-registration-template.php:58, class-user-registration.php:421
 msgid "Password"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Additional user registration options are available in the settings panel."
 msgstr ""
 
-#: class-user-registration-template.php:33, class-user-registration.php:399
+#: class-user-registration-template.php:33, class-user-registration.php:408
 msgid "Name"
 msgstr ""
 
@@ -116,106 +116,106 @@ msgstr ""
 msgid "A user with that email already exists."
 msgstr ""
 
-#: class-user-registration.php:267, class-user-registration.php:306
+#: class-user-registration.php:315, class-user-registration.php:276
 msgid "(Activation Required)"
 msgstr ""
 
-#: class-user-registration.php:268
-msgid "Account activation is required before the user can login."
-msgstr ""
-
-#: class-user-registration.php:271
-msgid "The user has been emailed a link to activate their account."
-msgstr ""
-
-#: class-user-registration.php:273
-msgid "You must manually activate their account."
-msgstr ""
-
-#: class-user-registration.php:313
-msgid "IMPORTANT: You must activate your account before you can login. Please visit the link below."
-msgstr ""
-
-#: class-user-registration.php:316
+#: class-user-registration.php:325
 msgid "Site administrator must activate your account before you can login."
 msgstr ""
 
-#: class-user-registration.php:350, class-user-registration.php:373
+#: class-user-registration.php:322
+msgid "IMPORTANT: You must activate your account before you can login. Please visit the link below."
+msgstr ""
+
+#: class-user-registration.php:277
+msgid "Account activation is required before the user can login."
+msgstr ""
+
+#: class-user-registration.php:282
+msgid "You must manually activate their account."
+msgstr ""
+
+#: class-user-registration.php:280
+msgid "The user has been emailed a link to activate their account."
+msgstr ""
+
+#: class-user-registration.php:359, class-user-registration.php:382
 msgid "User Registration"
 msgstr ""
 
-#: class-user-registration.php:384
+#: class-user-registration.php:393
 msgid "User Name"
 msgstr ""
 
-#: class-user-registration.php:387, class-user-registration.php:402, class-user-registration.php:428, class-user-registration.php:441, class-user-registration.php:546
+#: class-user-registration.php:396, class-user-registration.php:411, class-user-registration.php:437, class-user-registration.php:450, class-user-registration.php:555
 msgid "--- Select Field ---"
 msgstr ""
 
-#: class-user-registration.php:388
+#: class-user-registration.php:397
 msgid "If a username is not set or provided, it will become the user's email address"
 msgstr ""
 
-#: class-user-registration.php:415
+#: class-user-registration.php:424
 msgid "Auto generate"
 msgstr ""
 
-#: class-user-registration.php:425
+#: class-user-registration.php:434
 msgid "Website"
 msgstr ""
 
-#: class-user-registration.php:438
+#: class-user-registration.php:447
 msgid "Biographical Info"
 msgstr ""
 
-#: class-user-registration.php:456
+#: class-user-registration.php:465
 msgid "User Role"
 msgstr ""
 
-#: class-user-registration.php:469
+#: class-user-registration.php:478
 msgid "Send email to the user containing account information"
 msgstr ""
 
-#: class-user-registration.php:478
+#: class-user-registration.php:487
 msgid "Send email to the admin"
 msgstr ""
 
-#: class-user-registration.php:487
+#: class-user-registration.php:496
 msgid "Enable user activation"
 msgstr ""
 
-#: class-user-registration.php:496
+#: class-user-registration.php:505
 msgid "User Activation Method"
 msgstr ""
 
-#: class-user-registration.php:500
+#: class-user-registration.php:509
 msgid "User Email"
 msgstr ""
 
-#: class-user-registration.php:501
+#: class-user-registration.php:510
 msgid "Manual Approval"
 msgstr ""
 
-#: class-user-registration.php:503
+#: class-user-registration.php:512
 msgid "User Email method sends an email to the user with a link to activate their account. Manual Approval requires site admin to approve account."
 msgstr ""
 
-#: class-user-registration.php:518
+#: class-user-registration.php:527
 msgid "User Activation Confirmation Page"
 msgstr ""
 
-#: class-user-registration.php:520
+#: class-user-registration.php:529
 msgid "Home page"
 msgstr ""
 
-#: class-user-registration.php:522
+#: class-user-registration.php:531
 msgid "Select the page to show the user after they activate their account."
 msgstr ""
 
-#: class-user-registration.php:528
+#: class-user-registration.php:537
 msgid "Custom User Meta"
 msgstr ""
 
-#: class-user-registration.php:540
+#: class-user-registration.php:549
 msgid "Enter meta key..."
 msgstr ""

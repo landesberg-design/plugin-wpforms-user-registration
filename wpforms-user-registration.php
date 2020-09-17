@@ -1,13 +1,15 @@
 <?php
 /**
- * Plugin Name: WPForms User Registration
- * Plugin URI:  https://wpforms.com
- * Description: User Registration and Login forms with WPForms.
- * Author:      WPForms
- * Author URI:  https://wpforms.com
- * Version:     1.3.1
- * Text Domain: wpforms-user-registration
- * Domain Path: languages
+ * Plugin Name:       WPForms User Registration
+ * Plugin URI:        https://wpforms.com
+ * Description:       User Registration and Login forms with WPForms.
+ * Requires at least: 4.9
+ * Requires PHP:      5.5
+ * Author:            WPForms
+ * Author URI:        https://wpforms.com
+ * Version:           1.3.2
+ * Text Domain:       wpforms-user-registration
+ * Domain Path:       languages
  *
  * WPForms is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin version.
-define( 'WPFORMS_USER_REGISTRATION_VERSION', '1.3.1' );
+define( 'WPFORMS_USER_REGISTRATION_VERSION', '1.3.2' );
 
 /**
  * Load the classes.

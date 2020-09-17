@@ -199,9 +199,18 @@ class WPForms_User_Registration {
 
 		// Add custom user meta.
 		if ( ! empty( $form_settings['registration_meta'] ) ) {
-			foreach ( $form_settings['registration_meta'] as $meta_key => $meta_field ) {
-				if ( ! empty( $fields[ $meta_field ]['value'] ) ) {
-					update_user_meta( $user_id, $meta_key, $fields[ $meta_field ]['value'] );
+
+			foreach ( $form_settings['registration_meta'] as $key => $id ) {
+
+				if ( empty( $key ) || ( empty( $id ) && '0' !== $id ) ) {
+					continue;
+				}
+
+				if ( ! empty( $fields[ $id ]['value'] ) ) {
+
+					$value = apply_filters( 'wpforms_user_registration_process_meta', $fields[ $id ]['value'], $key, $id, $fields, $form_data );
+
+					update_user_meta( $user_id, $key, $value );
 				}
 			}
 		}
