@@ -7,7 +7,7 @@
  * Requires PHP:      5.5
  * Author:            WPForms
  * Author URI:        https://wpforms.com
- * Version:           1.3.2
+ * Version:           1.3.3
  * Text Domain:       wpforms-user-registration
  * Domain Path:       languages
  *
@@ -22,7 +22,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with WPForms. If not, see <http://www.gnu.org/licenses/>.
+ * along with WPForms. If not, see <https://www.gnu.org/licenses/>.
  */
 
 // Exit if accessed directly.
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin version.
-define( 'WPFORMS_USER_REGISTRATION_VERSION', '1.3.2' );
+define( 'WPFORMS_USER_REGISTRATION_VERSION', '1.3.3' );
 
 /**
  * Load the classes.

@@ -52,6 +52,7 @@ class WPForms_Template_User_Login extends WPForms_Template {
 				'notification_enable'   => '0',
 				'disable_entries'       => '1',
 				'user_login_hide'       => '1',
+				'antispam'              => true,
 			),
 			'meta'     => array(
 				'template' => $this->slug,
