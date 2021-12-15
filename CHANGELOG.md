@@ -1,12 +1,36 @@
 Change Log
-All notable changes to this project will be documented in this file, formatted via [this recommendation](http://keepachangelog.com/).
+All notable changes to this project will be documented in this file, formatted via [this recommendation](https://keepachangelog.com/).
+
+## [2.0.0] - 2021-12-09
+### Added
+- New Password Reset form template.
+- New smart tags.
+- Ability to hide a form if the user logged in.
+- Registration form: enable auto-login.
+- Registration form: editing for email notifications (subject and message body lines).
+- Registration form: user activation message when already activated.
+- Registration form: Conditional Logic support.
+- New option for site administrators to resend user activation email from the Users page.
+- Modern Email templates support.
+- Login Form template now has option to enable "remember me" functionality.
+- Compatibility with WPForms 1.6.8 and the updated Form Builder.
+
+### Changed
+- Registration functionality is available on any form.
+- Improved compatibility with WPForms Post Submissions and payment addons.
+- Improved compatibility with jQuery 3.5 and no jQuery Migrate plugin.
+- Improved translations by removing confusion if non-translatable placeholders are used.
+
+### Fixed
+- Sending registration emails to user/admin.
+- Set an attachment author for files uploaded through a File Upload field.
 
 ## [1.3.3] - 2020-12-17
 ### Changed
 - Enable antispam protection by default for all newly created forms using the User Login Form template.
 
 ### Fixed
-- Edge case where user account would be created if late form error was registered via custom code or third party plugin.
+- Edge case where user account would be created if late form error was registered via custom code or third-party plugin.
 
 ## [1.3.2] - 2020-08-05
 ### Added

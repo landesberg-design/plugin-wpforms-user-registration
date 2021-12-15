@@ -2,12 +2,12 @@
 /**
  * Plugin Name:       WPForms User Registration
  * Plugin URI:        https://wpforms.com
- * Description:       User Registration and Login forms with WPForms.
+ * Description:       User Registration, Login and Reset Password forms with WPForms.
  * Requires at least: 4.9
- * Requires PHP:      5.5
+ * Requires PHP:      5.6
  * Author:            WPForms
  * Author URI:        https://wpforms.com
- * Version:           1.3.3
+ * Version:           2.0.0
  * Text Domain:       wpforms-user-registration
  * Domain Path:       languages
  *
@@ -30,47 +30,158 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Plugin version.
-define( 'WPFORMS_USER_REGISTRATION_VERSION', '1.3.3' );
+// Plugin constants.
+define( 'WPFORMS_USER_REGISTRATION_VERSION', '2.0.0' );
+define( 'WPFORMS_USER_REGISTRATION_FILE', __FILE__ );
+define( 'WPFORMS_USER_REGISTRATION_PATH', plugin_dir_path( WPFORMS_USER_REGISTRATION_FILE ) );
+define( 'WPFORMS_USER_REGISTRATION_URL', plugin_dir_url( WPFORMS_USER_REGISTRATION_FILE ) );
 
 /**
- * Load the classes.
+ * Load the provider class.
  *
- * @since 1.0.0
+ * @since 2.0.0
  */
-require_once plugin_dir_path( __FILE__ ) . 'class-user-login.php';
-require_once plugin_dir_path( __FILE__ ) . 'class-user-registration.php';
-require_once plugin_dir_path( __FILE__ ) . 'class-user-activation.php';
+function wpforms_user_registration_load() {
 
-/**
- * Load plugin textdomain.
- *
- * @since 1.0.0
- */
-function wpforms_user_registration_textdomain() {
 	load_plugin_textdomain( 'wpforms-user-registration', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+	// Check requirements.
+	if ( ! wpforms_user_registration_required() ) {
+		return;
+	}
+
+	// Load the plugin.
+	wpforms_user_registration();
 }
-add_action( 'init', 'wpforms_user_registration_textdomain' );
+
+add_action( 'wpforms_loaded', 'wpforms_user_registration_load' );
+
+/**
+ * Check addon requirements.
+ *
+ * @since 2.0.0
+ */
+function wpforms_user_registration_required() {
+
+	if ( version_compare( PHP_VERSION, '5.6', '<' ) ) {
+		add_action( 'admin_init', 'wpforms_user_registration_deactivation' );
+		add_action( 'admin_notices', 'wpforms_user_registration_fail_php_version' );
+
+		return false;
+	}
+
+	if ( ! function_exists( 'wpforms' ) || ! wpforms()->pro ) {
+		return false;
+	}
+
+	if ( version_compare( wpforms()->version, '1.7.1.2', '<' ) ) {
+		add_action( 'admin_init', 'wpforms_user_registration_deactivation' );
+		add_action( 'admin_notices', 'wpforms_user_registration_fail_wpforms_version' );
+
+		return false;
+	}
+
+	if ( ! function_exists( 'wpforms_get_license_type' ) || ! in_array( wpforms_get_license_type(), [ 'pro', 'elite', 'agency', 'ultimate' ], true ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Deactivate the plugin.
+ *
+ * @since 2.0.0
+ */
+function wpforms_user_registration_deactivation() {
+
+	deactivate_plugins( plugin_basename( __FILE__ ) );
+}
+
+/**
+ * Admin notice for minimum PHP version.
+ *
+ * @since 2.0.0
+ */
+function wpforms_user_registration_fail_php_version() {
+
+	echo '<div class="notice notice-error"><p>';
+	printf(
+		wp_kses( /* translators: %s - WPForms.com documentation page URL. */
+			__( 'The WPForms User Registration plugin has been deactivated. Your site is running an outdated version of PHP that is no longer supported and is not compatible with the User Registration addon. <a href="%s" target="_blank" rel="noopener noreferrer">Read more</a> for additional information.', 'wpforms-user-registration' ),
+			[
+				'a' => [
+					'href'   => [],
+					'rel'    => [],
+					'target' => [],
+				],
+			]
+		),
+		'https://wpforms.com/docs/supported-php-version/'
+	);
+	echo '</p></div>';
+
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
+	}
+	// phpcs:enable WordPress.Security.NonceVerification.Recommended
+}
+
+/**
+ * Admin notice for minimum WPForms version.
+ *
+ * @since 2.0.0
+ */
+function wpforms_user_registration_fail_wpforms_version() {
+
+	echo '<div class="notice notice-error"><p>';
+	esc_html_e( 'The WPForms User Registration plugin has been deactivated, because it requires WPForms v1.7.1.2 or later to work.', 'wpforms-user-registration' );
+	echo '</p></div>';
+
+	// phpcs:disable WordPress.Security.NonceVerification.Recommended
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
+	}
+	// phpcs:enable WordPress.Security.NonceVerification.Recommended
+}
+
+/**
+ * Get the instance of the `\WPFormsUserRegistration\Plugin` class.
+ * This function is useful for quickly grabbing data used throughout the plugin.
+ *
+ * @since 2.0.0
+ *
+ * @return \WPFormsUserRegistration\Plugin
+ */
+function wpforms_user_registration() {
+
+	// Actually, load the User Registration addon now, as we met all the requirements.
+	require_once __DIR__ . '/vendor/autoload.php';
+
+	return \WPFormsUserRegistration\Plugin::get_instance();
+}
 
 /**
  * Load the plugin updater.
  *
  * @since 1.0.0
  *
- * @param string $key
+ * @param string $key License key.
  */
 function wpforms_user_registration_updater( $key ) {
 
-	new WPForms_Updater(
-		array(
+	new \WPForms_Updater(
+		[
 			'plugin_name' => 'WPForms User Registration',
 			'plugin_slug' => 'wpforms-user-registration',
-			'plugin_path' => plugin_basename( __FILE__ ),
-			'plugin_url'  => trailingslashit( plugin_dir_url( __FILE__ ) ),
+			'plugin_path' => plugin_basename( WPFORMS_USER_REGISTRATION_FILE ),
+			'plugin_url'  => trailingslashit( WPFORMS_USER_REGISTRATION_URL ),
 			'remote_url'  => WPFORMS_UPDATER_API,
 			'version'     => WPFORMS_USER_REGISTRATION_VERSION,
 			'key'         => $key,
-		)
+		]
 	);
 }
+
 add_action( 'wpforms_updater', 'wpforms_user_registration_updater' );
