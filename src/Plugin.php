@@ -42,10 +42,11 @@ class Plugin {
 	 */
 	private function init_components() {
 
+		( new Migrations\Migrations() )->init();
+
 		if ( is_admin() ) {
 			( new Admin\Builder() )->hooks();
 			( new Admin\UsersListing() )->hooks();
-			( new Migrations() )->init();
 			( new Settings() )->hooks();
 		} else {
 			( new Activation() )->hooks();

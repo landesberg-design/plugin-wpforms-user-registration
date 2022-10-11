@@ -35,8 +35,17 @@ class Registration extends Base {
 	 */
 	public function process( $fields, $entry, $form_data ) {
 
-		// If form contains exiting errors, return early.
-		if ( ! UserRegistration::is_registration_enabled( $form_data ) || ! empty( wpforms()->get( 'process' )->errors[ $form_data['id'] ] ) ) {
+		/**
+		 * Bail out in several cases:
+		 * 1) if it is not a registration form.
+		 * 2) if the conditional logic for registration is not met.
+		 * 3) if form contains errors.
+		 */
+		if (
+			! UserRegistration::is_registration_enabled( $form_data ) ||
+			! $this->is_registration_needed( $fields, $form_data ) ||
+			! empty( wpforms()->get( 'process' )->errors[ $form_data['id'] ] )
+		) {
 			return;
 		}
 
@@ -52,6 +61,7 @@ class Registration extends Base {
 		// Check that username does not already exist.
 		if ( username_exists( $reg_fields['username'] ) ) {
 
+			// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 			$message = apply_filters_deprecated(
 				'wpforms_user_registration_username_exists',
 				[ esc_html__( 'A user with that username already exists.', 'wpforms-user-registration' ) ],
@@ -59,6 +69,7 @@ class Registration extends Base {
 				'wpforms_user_registration_process_registration_process_username_exists_error_message'
 			);
 
+			// phpcs:disable WPForms.PHP.ValidateHooks.InvalidHookName
 			/**
 			 * This filter allows overwriting username exists error message.
 			 *
@@ -67,6 +78,7 @@ class Registration extends Base {
 			 * @param string $message Error Message text.
 			 */
 			wpforms()->get( 'process' )->errors[ $form_data['id'] ]['header'] = apply_filters( 'wpforms_user_registration_process_registration_process_username_exists_error_message', $message );
+			// phpcs:enable WPForms.PHP.ValidateHooks.InvalidHookName
 
 			return;
 		}
@@ -74,6 +86,7 @@ class Registration extends Base {
 		// Check if username is valid.
 		if ( ! validate_username( $reg_fields['username'] ) ) {
 
+			// phpcs:disable WPForms.PHP.ValidateHooks.InvalidHookName
 			/**
 			 * This filter allows overwriting username invalid error message.
 			 *
@@ -82,6 +95,7 @@ class Registration extends Base {
 			 * @param string $message Error Message text.
 			 */
 			wpforms()->get( 'process' )->errors[ $form_data['id'] ]['header'] = apply_filters( 'wpforms_user_registration_process_registration_process_username_invalid_error_message', esc_html__( 'This username is invalid because it uses illegal characters. Please enter a valid username.', 'wpforms-user-registration' ) );
+			// phpcs:enable WPForms.PHP.ValidateHooks.InvalidHookName
 
 			return;
 		}
@@ -91,6 +105,7 @@ class Registration extends Base {
 			return;
 		}
 
+		// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 		$message = apply_filters_deprecated(
 			'wpforms_user_registration_email_exists',
 			[ esc_html__( 'A user with that email already exists.', 'wpforms-user-registration' ) ],
@@ -98,6 +113,7 @@ class Registration extends Base {
 			'wpforms_user_registration_process_registration_process_user_email_exists_error_message'
 		);
 
+		// phpcs:disable WPForms.PHP.ValidateHooks.InvalidHookName
 		/**
 		 * This filter allows overwriting user email exists error message.
 		 *
@@ -106,6 +122,7 @@ class Registration extends Base {
 		 * @param string $message Error Message text.
 		 */
 		wpforms()->get( 'process' )->errors[ $form_data['id'] ]['header'] = apply_filters( 'wpforms_user_registration_process_registration_process_user_email_exists_error_message', $message );
+		// phpcs:enable WPForms.PHP.ValidateHooks.InvalidHookName
 	}
 
 	/**
@@ -185,6 +202,7 @@ class Registration extends Base {
 
 		wpforms_user_registration()->get( 'email_notifications' )->notification( $user_id, $user_data, $form_data, $fields, $entry_id );
 
+		// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 		do_action_deprecated(
 			'wpforms_user_registered',
 			[ $user_id, $fields, $form_data, $user_data ],
@@ -192,6 +210,7 @@ class Registration extends Base {
 			'wpforms_user_registration_process_registration_process_completed_after'
 		);
 
+		// phpcs:disable WPForms.PHP.ValidateHooks.InvalidHookName
 		/**
 		 * This action fires after user registered account.
 		 *
@@ -203,6 +222,7 @@ class Registration extends Base {
 		 * @param array $user_data User data.
 		 */
 		do_action( 'wpforms_user_registration_process_registration_process_completed_after', $user_id, $fields, $form_data, $user_data );
+		// phpcs:enable WPForms.PHP.ValidateHooks.InvalidHookName
 
 		$this->maybe_auto_login( $form_data['settings'], $user_data );
 	}
@@ -365,7 +385,18 @@ class Registration extends Base {
 			$user_data['description'] = $reg_fields['bio'];
 		}
 
-		return $user_data;
+		// phpcs:disable WPForms.PHP.ValidateHooks.InvalidHookName
+		/**
+		 * Filter user data before using them in wp_insert_user.
+		 *
+		 * @since 2.1.0
+		 *
+		 * @param array $user_data User data.
+		 * @param array $fields    The fields that have been submitted.
+		 * @param array $form_data The information for the form.
+		 */
+		return (array) apply_filters( 'wpforms_user_registration_process_registration_get_data', $user_data, $fields, $form_data );
+		// phpcs:enable WPForms.PHP.ValidateHooks.InvalidHookName
 	}
 
 	/**
@@ -465,6 +496,7 @@ class Registration extends Base {
 				continue;
 			}
 
+			// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 			$value = apply_filters_deprecated(
 				'wpforms_user_registration_process_meta',
 				[ $fields[ $id ]['value'], $key, $id, $fields, $form_data ],
@@ -472,6 +504,7 @@ class Registration extends Base {
 				'wpforms_user_registration_process_registration_custom_meta_value'
 			);
 
+			// phpcs:disable WPForms.PHP.ValidateHooks.InvalidHookName
 			/**
 			 * This filter allows overwriting custom meta while processing user registration.
 			 *
@@ -484,6 +517,7 @@ class Registration extends Base {
 			 * @param array  $form_data The information for the form.
 			 */
 			$value = apply_filters( 'wpforms_user_registration_process_registration_custom_meta_value', $value, $key, $id, $fields, $form_data );
+			// phpcs:enable WPForms.PHP.ValidateHooks.InvalidHookName
 
 			update_user_meta( $user_id, $key, $value );
 		}

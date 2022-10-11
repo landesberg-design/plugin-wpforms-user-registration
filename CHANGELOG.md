@@ -1,6 +1,19 @@
 Change Log
 All notable changes to this project will be documented in this file, formatted via [this recommendation](https://keepachangelog.com/).
 
+## [2.1.0] - 2022-08-29
+### Added
+- New filter `wpforms_user_registration_process_registration_get_data` that allow modifying user data before registration.
+
+### Changed
+- Validation function for a form ID when Smart Tags are processed.
+- Treat empty post titles and term names in Dynamic Choices the way WordPress does.
+- Minimum WPForms version supported is 1.7.6.
+
+### Fixed
+- Registration form: Conditional Logic didn't work properly.
+- Activation link was missed in an email if Confirmation setting was used for Email field.
+
 ## [2.0.0] - 2021-12-09
 ### Added
 - New Password Reset form template.
@@ -12,7 +25,7 @@ All notable changes to this project will be documented in this file, formatted v
 - Registration form: Conditional Logic support.
 - New option for site administrators to resend user activation email from the Users page.
 - Modern Email templates support.
-- Login Form template now has option to enable "remember me" functionality.
+- Login Form template now has the option to enable "remember me" functionality.
 - Compatibility with WPForms 1.6.8 and the updated Form Builder.
 
 ### Changed

@@ -319,7 +319,7 @@ class Registration extends Base {
 
 		foreach ( $pages as $page ) {
 			/* translators: %d - a page ID. */
-			$title          = ! empty( $page->post_title ) ? $page->post_title : sprintf( __( '#%d (no title)', 'wpforms-user-registration' ), $page->ID );
+			$title          = esc_html( wpforms_get_post_title( $page ) );
 			$depth          = count( $page->ancestors );
 			$p[ $page->ID ] = str_repeat( '&nbsp;', $depth * 3 ) . $title;
 		}
@@ -474,6 +474,7 @@ class Registration extends Base {
 					'not_create' => esc_html__( 'Do not create', 'wpforms-user-registration' ),
 				],
 				'action_desc' => esc_html__( ' a user account if...', 'wpforms-user-registration' ),
+				'reference'   => esc_html__( 'User Registration setting', 'wpforms-user-registration' ),
 			],
 			false
 		);

@@ -1,4 +1,4 @@
-# Copyright (C) 2021 WPForms User Registration
+# Copyright (C) 2022 WPForms User Registration
 # This file is distributed under the same license as the WPForms User Registration package.
 msgid ""
 msgstr ""
@@ -6,7 +6,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Econdig: 8bit\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: WPForms <support@wpforms.com>\n"
+"MIME-Version: 1.0\n"
+"Project-Id-Version: WPForms User Registration\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -14,8 +18,45 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. translators: %s - WPForms.com documentation page URL.
+#: wpforms-user-registration.php:111
+msgid "The WPForms User Registration plugin has been deactivated. Your site is running an outdated version of PHP that is no longer supported and is not compatible with the User Registration addon. <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Read more</a> for additional information."
+msgstr ""
+
+#: wpforms-user-registration.php:139
+msgid "The WPForms User Registration plugin has been deactivated, because it requires WPForms v1.7.6 or later to work."
+msgstr ""
+
 #: src/Activation.php:99
 msgid "The link is expired please contact the site administrator for more details."
+msgstr ""
+
+#: src/SmartTags.php:34
+msgid "Site Name"
+msgstr ""
+
+#: src/SmartTags.php:35
+msgid "User Registration Login"
+msgstr ""
+
+#: src/SmartTags.php:36
+msgid "User Registration Email"
+msgstr ""
+
+#: src/SmartTags.php:37
+msgid "User Registration Password"
+msgstr ""
+
+#: src/SmartTags.php:38
+msgid "User Registration user activation URL"
+msgstr ""
+
+#: src/SmartTags.php:39
+msgid "Admin manage users activations URL"
+msgstr ""
+
+#: src/SmartTags.php:40
+msgid "User Registration user password reset URL"
 msgstr ""
 
 #: src/Admin/Builder.php:82
@@ -28,184 +69,6 @@ msgstr ""
 
 #: src/Admin/Builder.php:100, src/Admin/Builder/Registration.php:39
 msgid "User Registration"
-msgstr ""
-
-#: src/Admin/Builder/Base.php:72
-msgid "Hide form if user is logged in"
-msgstr ""
-
-#. translators: %1$s - user's first name, %2$s - logout url.
-#: src/Admin/Builder/Base.php:79
-msgid "Hi %1$s, you’re already logged in. <a href=\"%2$s\">Log out</a>."
-msgstr ""
-
-#: src/Admin/Builder/Base.php:95
-msgid "Logged In Message"
-msgstr ""
-
-#: src/Admin/Builder/Base.php:102
-msgid "Message to display instead of a form for logged in users."
-msgstr ""
-
-#: src/Admin/Builder/Login.php:34
-msgid "User Registration - Login"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:51
-msgid "Enable User Registration"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:62
-msgid "Field Mapping"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:63
-msgid "Connect your form fields to information in the user’s account."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:70
-msgid "User Roles"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:78
-msgid "User Activation & Login"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:86
-msgid "Email Notifications"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:94
-msgid "Custom User Meta"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:95
-msgid "Connect additional form fields to custom fields which are associated with the user’s account."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:104
-msgid "Conditional Logic"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:151, src/Templates/Registration.php:45
-msgid "Username"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:154, src/Admin/Builder/Registration.php:174, src/Admin/Builder/Registration.php:191, src/Admin/Builder/Registration.php:219, src/Admin/Builder/Registration.php:233, templates/builder/custom-user-meta.php:34
-msgid "--- Select Field ---"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:155
-msgid "If a username is not set or provided, the user's email address will be used instead."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:171, src/Templates/Registration.php:52
-msgid "Email"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:188, src/Templates/Registration.php:37
-msgid "Name"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:202, src/Templates/Login.php:45, src/Templates/Registration.php:63, src/Templates/Reset.php:45
-msgid "Password"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:205
-msgid "Auto generate"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:216
-msgid "Website"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:230
-msgid "Biographical Info"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:291
-msgid "Enable user activation"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:302
-msgid "User Activation Method"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:306
-msgid "User Email"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:307
-msgid "Manual Approval"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:309
-msgid "User Email method sends an email to the user with a link to activate their account. Manual Approval requires site admin to approve account."
-msgstr ""
-
-#. translators: %d - a page ID.
-#: src/Admin/Builder/Registration.php:322
-msgid "#%d (no title)"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:332
-msgid "User Activation Confirmation Page"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:334
-msgid "-- Select Page --"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:336
-msgid "Select the page to show the user after they activate their account."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:346
-msgid "Enable auto log in"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:348
-msgid "Automatically log the user in after they've registered."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:370
-msgid "<a href=\"#\" class=\"registration_email_template_toggle\">Edit Template</a>"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:385
-msgid "Email the admin when a new user is created."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:401
-msgid "Email the user with their account information."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:417
-msgid "Email the user once their account has been activated."
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:473
-msgid "Create"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:474
-msgid "Do not create"
-msgstr ""
-
-#: src/Admin/Builder/Registration.php:476
-msgid " a user account if..."
-msgstr ""
-
-#: src/Admin/Builder/Reset.php:36
-msgid "User Registration - Reset Password"
-msgstr ""
-
-#: src/Admin/Builder/Reset.php:45
-msgid "Reset Password Email"
-msgstr ""
-
-#: src/Admin/Builder/Reset.php:46
-msgid "You may customize the email that’s sent when a user requests a password reset."
 msgstr ""
 
 #: src/Admin/Settings.php:42
@@ -405,19 +268,19 @@ msgstr ""
 msgid "<strong>ERROR:</strong> Your account must be activated before you can log in."
 msgstr ""
 
-#: src/Process/Registration.php:47
+#: src/Process/Registration.php:56
 msgid "Email address is required."
 msgstr ""
 
-#: src/Process/Registration.php:57
+#: src/Process/Registration.php:67
 msgid "A user with that username already exists."
 msgstr ""
 
-#: src/Process/Registration.php:84
+#: src/Process/Registration.php:97
 msgid "This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr ""
 
-#: src/Process/Registration.php:96
+#: src/Process/Registration.php:111
 msgid "A user with that email already exists."
 msgstr ""
 
@@ -427,34 +290,6 @@ msgstr ""
 
 #: src/Process/Reset.php:103
 msgid "Unable to reset a password. The user does not exist."
-msgstr ""
-
-#: src/SmartTags.php:34
-msgid "Site Name"
-msgstr ""
-
-#: src/SmartTags.php:35
-msgid "User Registration Login"
-msgstr ""
-
-#: src/SmartTags.php:36
-msgid "User Registration Email"
-msgstr ""
-
-#: src/SmartTags.php:37
-msgid "User Registration Password"
-msgstr ""
-
-#: src/SmartTags.php:38
-msgid "User Registration user activation URL"
-msgstr ""
-
-#: src/SmartTags.php:39
-msgid "Admin manage users activations URL"
-msgstr ""
-
-#: src/SmartTags.php:40
-msgid "User Registration user password reset URL"
 msgstr ""
 
 #: src/Templates/Login.php:21
@@ -467,6 +302,10 @@ msgstr ""
 
 #: src/Templates/Login.php:34, src/Templates/Reset.php:34
 msgid "Username or Email"
+msgstr ""
+
+#: src/Templates/Login.php:45, src/Templates/Registration.php:63, src/Templates/Reset.php:45, src/Admin/Builder/Registration.php:202
+msgid "Password"
 msgstr ""
 
 #: src/Templates/Login.php:56, src/Templates/Login.php:61
@@ -489,6 +328,18 @@ msgstr ""
 msgid "Additional user registration options are available in the settings panel."
 msgstr ""
 
+#: src/Templates/Registration.php:37, src/Admin/Builder/Registration.php:188
+msgid "Name"
+msgstr ""
+
+#: src/Templates/Registration.php:45, src/Admin/Builder/Registration.php:151
+msgid "Username"
+msgstr ""
+
+#: src/Templates/Registration.php:52, src/Admin/Builder/Registration.php:171
+msgid "Email"
+msgstr ""
+
 #: src/Templates/Registration.php:70
 msgid "Short Bio"
 msgstr ""
@@ -509,16 +360,168 @@ msgstr ""
 msgid "Enter meta key..."
 msgstr ""
 
+#: templates/builder/custom-user-meta.php:34, src/Admin/Builder/Registration.php:154, src/Admin/Builder/Registration.php:174, src/Admin/Builder/Registration.php:191, src/Admin/Builder/Registration.php:219, src/Admin/Builder/Registration.php:233
+msgid "--- Select Field ---"
+msgstr ""
+
 #. translators: %d - field ID.
 #: templates/builder/custom-user-meta.php:40
 msgid "Field #%d"
 msgstr ""
 
-#. translators: %s - WPForms.com documentation page URL.
-#: wpforms-user-registration.php:111
-msgid "The WPForms User Registration plugin has been deactivated. Your site is running an outdated version of PHP that is no longer supported and is not compatible with the User Registration addon. <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Read more</a> for additional information."
+#: src/Admin/Builder/Base.php:72
+msgid "Hide form if user is logged in"
 msgstr ""
 
-#: wpforms-user-registration.php:139
-msgid "The WPForms User Registration plugin has been deactivated, because it requires WPForms v1.7.1.2 or later to work."
+#. translators: %1$s - user's first name, %2$s - logout url.
+#: src/Admin/Builder/Base.php:79
+msgid "Hi %1$s, you’re already logged in. <a href=\"%2$s\">Log out</a>."
+msgstr ""
+
+#: src/Admin/Builder/Base.php:95
+msgid "Logged In Message"
+msgstr ""
+
+#: src/Admin/Builder/Base.php:102
+msgid "Message to display instead of a form for logged in users."
+msgstr ""
+
+#: src/Admin/Builder/Login.php:34
+msgid "User Registration - Login"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:51
+msgid "Enable User Registration"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:62
+msgid "Field Mapping"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:63
+msgid "Connect your form fields to information in the user’s account."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:70
+msgid "User Roles"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:78
+msgid "User Activation & Login"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:86
+msgid "Email Notifications"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:94
+msgid "Custom User Meta"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:95
+msgid "Connect additional form fields to custom fields which are associated with the user’s account."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:104
+msgid "Conditional Logic"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:155
+msgid "If a username is not set or provided, the user's email address will be used instead."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:205
+msgid "Auto generate"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:216
+msgid "Website"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:230
+msgid "Biographical Info"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:291
+msgid "Enable user activation"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:302
+msgid "User Activation Method"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:306
+msgid "User Email"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:307
+msgid "Manual Approval"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:309
+msgid "User Email method sends an email to the user with a link to activate their account. Manual Approval requires site admin to approve account."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:332
+msgid "User Activation Confirmation Page"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:334
+msgid "-- Select Page --"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:336
+msgid "Select the page to show the user after they activate their account."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:346
+msgid "Enable auto log in"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:348
+msgid "Automatically log the user in after they've registered."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:370
+msgid "<a href=\"#\" class=\"registration_email_template_toggle\">Edit Template</a>"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:385
+msgid "Email the admin when a new user is created."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:401
+msgid "Email the user with their account information."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:417
+msgid "Email the user once their account has been activated."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:473
+msgid "Create"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:474
+msgid "Do not create"
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:476
+msgid " a user account if..."
+msgstr ""
+
+#: src/Admin/Builder/Registration.php:477
+msgid "User Registration setting"
+msgstr ""
+
+#: src/Admin/Builder/Reset.php:36
+msgid "User Registration - Reset Password"
+msgstr ""
+
+#: src/Admin/Builder/Reset.php:45
+msgid "Reset Password Email"
+msgstr ""
+
+#: src/Admin/Builder/Reset.php:46
+msgid "You may customize the email that’s sent when a user requests a password reset."
 msgstr ""

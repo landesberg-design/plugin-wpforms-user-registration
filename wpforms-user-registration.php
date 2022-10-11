@@ -7,7 +7,7 @@
  * Requires PHP:      5.6
  * Author:            WPForms
  * Author URI:        https://wpforms.com
- * Version:           2.0.0
+ * Version:           2.1.0
  * Text Domain:       wpforms-user-registration
  * Domain Path:       languages
  *
@@ -30,11 +30,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// phpcs:disable WPForms.Comments.PHPDocDefine.MissPHPDoc
 // Plugin constants.
-define( 'WPFORMS_USER_REGISTRATION_VERSION', '2.0.0' );
+define( 'WPFORMS_USER_REGISTRATION_VERSION', '2.1.0' );
 define( 'WPFORMS_USER_REGISTRATION_FILE', __FILE__ );
 define( 'WPFORMS_USER_REGISTRATION_PATH', plugin_dir_path( WPFORMS_USER_REGISTRATION_FILE ) );
 define( 'WPFORMS_USER_REGISTRATION_URL', plugin_dir_url( WPFORMS_USER_REGISTRATION_FILE ) );
+// phpcs:enable WPForms.Comments.PHPDocDefine.MissPHPDoc
 
 /**
  * Load the provider class.
@@ -42,8 +44,6 @@ define( 'WPFORMS_USER_REGISTRATION_URL', plugin_dir_url( WPFORMS_USER_REGISTRATI
  * @since 2.0.0
  */
 function wpforms_user_registration_load() {
-
-	load_plugin_textdomain( 'wpforms-user-registration', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 	// Check requirements.
 	if ( ! wpforms_user_registration_required() ) {
@@ -74,7 +74,7 @@ function wpforms_user_registration_required() {
 		return false;
 	}
 
-	if ( version_compare( wpforms()->version, '1.7.1.2', '<' ) ) {
+	if ( version_compare( wpforms()->version, '1.7.6', '<' ) ) {
 		add_action( 'admin_init', 'wpforms_user_registration_deactivation' );
 		add_action( 'admin_notices', 'wpforms_user_registration_fail_wpforms_version' );
 
@@ -99,7 +99,7 @@ function wpforms_user_registration_deactivation() {
 }
 
 /**
- * Admin notice for minimum PHP version.
+ * Admin notice for a minimum PHP version.
  *
  * @since 2.0.0
  */
@@ -136,7 +136,7 @@ function wpforms_user_registration_fail_php_version() {
 function wpforms_user_registration_fail_wpforms_version() {
 
 	echo '<div class="notice notice-error"><p>';
-	esc_html_e( 'The WPForms User Registration plugin has been deactivated, because it requires WPForms v1.7.1.2 or later to work.', 'wpforms-user-registration' );
+	esc_html_e( 'The WPForms User Registration plugin has been deactivated, because it requires WPForms v1.7.6 or later to work.', 'wpforms-user-registration' );
 	echo '</p></div>';
 
 	// phpcs:disable WordPress.Security.NonceVerification.Recommended

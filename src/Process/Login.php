@@ -92,7 +92,7 @@ class Login extends Base {
 			'wpforms_user_registration_login_error',
 			[ $user->get_error_message(), $error_code ],
 			'2.0.0 of the WPForms User Registration plugin',
-			'wpforms_user_registration_process_login_process_error_message'
+			'wpforms_user_registration_process_login_process_wp_error_message'
 		);
 
 		/**

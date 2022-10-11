@@ -43,20 +43,23 @@ class Helper {
 			return self::$user;
 		}
 
-		if ( empty( $_POST['wpforms']['id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		// phpcs:disable WordPress.Security.NonceVerification.Missing
+		if ( empty( $_POST['wpforms']['id'] ) ) {
 			return false;
 		}
 
-		$form_data = wpforms()->get( 'form' )->get( sanitize_key( wp_unslash( $_POST['wpforms']['id'] ) ), [ 'content_only' => true ] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		$form_data = wpforms()->get( 'form' )->get( absint( $_POST['wpforms']['id'] ), [ 'content_only' => true ] );
 
-		if ( isset( $form_data['settings']['registration_username'], $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) && ! empty( $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) && ! is_array( $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			self::$user = get_user_by( 'login', sanitize_user( wp_unslash( $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		if ( isset( $form_data['settings']['registration_username'], $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) && ! empty( $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) && ! is_array( $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) ) {
+			self::$user = get_user_by( 'login', sanitize_user( wp_unslash( $_POST['wpforms']['fields'][ $form_data['settings']['registration_username'] ] ) ) );
 
 			return self::$user;
 		}
 
-		if ( isset( $form_data['settings']['registration_email'], $_POST['wpforms']['fields'][ $form_data['settings']['registration_email'] ] ) && ! empty( $_POST['wpforms']['fields'][ $form_data['settings']['registration_email'] ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			self::$user = get_user_by( 'email', sanitize_email( wp_unslash( $_POST['wpforms']['fields'][ $form_data['settings']['registration_email'] ] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		if ( isset( $form_data['settings']['registration_email'], $_POST['wpforms']['fields'][ $form_data['settings']['registration_email'] ] ) && ! empty( $_POST['wpforms']['fields'][ $form_data['settings']['registration_email'] ] ) ) {
+			$field_value        = wp_unslash( $_POST['wpforms']['fields'][ $form_data['settings']['registration_email'] ] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$registration_email = isset( $field_value['primary'] ) ? $field_value['primary'] : $field_value;
+			self::$user         = get_user_by( 'email', sanitize_email( $registration_email ) );
 
 			return self::$user;
 		}
@@ -64,11 +67,12 @@ class Helper {
 		$email_field = wpforms_get_form_fields_by_meta( 'nickname', 'email', $form_data );
 		$email_field = reset( $email_field );
 
-		if ( $email_field && isset( $_POST['wpforms']['fields'][ $email_field['id'] ] ) && ! empty( $_POST['wpforms']['fields'][ $email_field['id'] ] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			self::$user = get_user_by( 'email', sanitize_email( wp_unslash( $_POST['wpforms']['fields'][ $email_field['id'] ] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		if ( $email_field && isset( $_POST['wpforms']['fields'][ $email_field['id'] ] ) && ! empty( $_POST['wpforms']['fields'][ $email_field['id'] ] ) ) {
+			self::$user = get_user_by( 'email', sanitize_email( wp_unslash( $_POST['wpforms']['fields'][ $email_field['id'] ] ) ) );
 
 			return self::$user;
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 		return false;
 	}
