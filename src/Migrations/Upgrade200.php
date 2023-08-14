@@ -48,7 +48,13 @@ class Upgrade200 extends UpgradeBase {
 	 */
 	private function is_used_before() {
 
-		$forms = wpforms()->get( 'form' )->get(
+		$form_obj = wpforms()->get( 'form' );
+
+		if ( $form_obj === null ) {
+			return false;
+		}
+
+		$forms = $form_obj->get(
 			'',
 			[
 				'content_only' => true,

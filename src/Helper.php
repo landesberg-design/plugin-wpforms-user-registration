@@ -2,6 +2,8 @@
 
 namespace WPFormsUserRegistration;
 
+use WP_User;
+
 /**
  * Main Helper class.
  *
@@ -18,7 +20,7 @@ class Helper {
 	 */
 	public static function set_user_role( $user_id ) {
 
-		$user = new \WP_User( $user_id );
+		$user = new WP_User( $user_id );
 
 		// Check if we need to assign new role.
 		$role = $user->get( 'wpforms-role' );

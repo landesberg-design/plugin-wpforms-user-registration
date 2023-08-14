@@ -2,6 +2,8 @@
 
 namespace WPFormsUserRegistration\Admin\Builder;
 
+use WPForms_Builder_Panel_Settings;
+
 /**
  * Base class for all template-related settings.
  *
@@ -14,7 +16,7 @@ abstract class Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 */
 	abstract protected function settings_content( $instance );
 

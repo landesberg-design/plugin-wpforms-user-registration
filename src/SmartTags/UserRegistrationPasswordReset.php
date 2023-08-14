@@ -10,6 +10,8 @@ use WPFormsUserRegistration\SmartTags\Helpers\Helper;
  * Class UserRegistrationPasswordReset.
  *
  * @since 2.0.0
+ *
+ * @noinspection PhpUnused
  */
 class UserRegistrationPasswordReset extends SmartTag {
 

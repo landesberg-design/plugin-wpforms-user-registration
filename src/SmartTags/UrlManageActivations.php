@@ -8,6 +8,8 @@ use WPForms\SmartTags\SmartTag\SmartTag;
  * Class UrlManageActivations.
  *
  * @since 2.0.0
+ *
+ * @noinspection PhpUnused
  */
 class UrlManageActivations extends SmartTag {
 

@@ -1,4 +1,4 @@
-# Copyright (C) 2022 WPForms User Registration
+# Copyright (C) 2023 WPForms User Registration
 # This file is distributed under the same license as the WPForms User Registration package.
 msgid ""
 msgstr ""
@@ -6,11 +6,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Content-Transfer-Econdig: 8bit\n"
-"Content-Type: text/plain; charset=UTF-8\n"
 "Language-Team: WPForms <support@wpforms.com>\n"
-"MIME-Version: 1.0\n"
-"Project-Id-Version: WPForms User Registration\n"
+"POT-Creation-Date: 2023-08-07 18:27+0000\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -18,56 +15,43 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. translators: %s - WPForms.com documentation page URL.
-#: wpforms-user-registration.php:111
-msgid "The WPForms User Registration plugin has been deactivated. Your site is running an outdated version of PHP that is no longer supported and is not compatible with the User Registration addon. <a href=\"%s\" target=\"_blank\" rel=\"noopener noreferrer\">Read more</a> for additional information."
-msgstr ""
-
-#: wpforms-user-registration.php:139
-msgid "The WPForms User Registration plugin has been deactivated, because it requires WPForms v1.7.6 or later to work."
-msgstr ""
-
-#: src/Activation.php:99
+#: src/Activation.php:100
 msgid "The link is expired please contact the site administrator for more details."
 msgstr ""
 
 #: src/SmartTags.php:34
-msgid "Site Name"
-msgstr ""
-
-#: src/SmartTags.php:35
 msgid "User Registration Login"
 msgstr ""
 
-#: src/SmartTags.php:36
+#: src/SmartTags.php:35
 msgid "User Registration Email"
 msgstr ""
 
-#: src/SmartTags.php:37
+#: src/SmartTags.php:36
 msgid "User Registration Password"
 msgstr ""
 
-#: src/SmartTags.php:38
+#: src/SmartTags.php:37
 msgid "User Registration user activation URL"
 msgstr ""
 
-#: src/SmartTags.php:39
+#: src/SmartTags.php:38
 msgid "Admin manage users activations URL"
 msgstr ""
 
-#: src/SmartTags.php:40
+#: src/SmartTags.php:39
 msgid "User Registration user password reset URL"
 msgstr ""
 
-#: src/Admin/Builder.php:82
+#: src/Admin/Builder.php:106
 msgid "Edit Template"
 msgstr ""
 
-#: src/Admin/Builder.php:83
+#: src/Admin/Builder.php:107
 msgid "Hide Template"
 msgstr ""
 
-#: src/Admin/Builder.php:100, src/Admin/Builder/Registration.php:39
+#: src/Admin/Builder.php:125, src/Admin/Builder/Registration.php:40
 msgid "User Registration"
 msgstr ""
 
@@ -88,42 +72,42 @@ msgid "Modern"
 msgstr ""
 
 #. translators: %1$s - link to unapproved users list admin page; %2$s - CSS class name; %3$s - count of unapproved users.
-#: src/Admin/UsersListing.php:84
+#: src/Admin/UsersListing.php:86
 msgid "<a href=\"%1$s\" class=\"%2$s\" rel=\"noopener noreferrer\">Unapproved <span class=\"count\">(%3$s)</span></a>"
 msgstr ""
 
-#: src/Admin/UsersListing.php:125
+#: src/Admin/UsersListing.php:127
 msgid "Approve"
 msgstr ""
 
-#: src/Admin/UsersListing.php:126
+#: src/Admin/UsersListing.php:128
 msgid "Unapprove"
 msgstr ""
 
-#. translators: %s - Link to unapprove users action
-#: src/Admin/UsersListing.php:165
+#. translators: %s - Link to unapprove users action.
+#: src/Admin/UsersListing.php:167
 msgid "<a href=\"%s\" class=\"submitunapprove\" rel=\"noopener noreferrer\">Unapprove</a>"
 msgstr ""
 
-#. translators: %s - Link to approve users action
-#: src/Admin/UsersListing.php:194
+#. translators: %s - Link to approve users action.
+#: src/Admin/UsersListing.php:196
 msgid "<a href=\"%s\" class=\"submitapprove\" rel=\"noopener noreferrer\">Approve</a>"
 msgstr ""
 
-#. translators: %s - Link to resend activation email
-#: src/Admin/UsersListing.php:221
+#. translators: %s - Link to resend activation email.
+#: src/Admin/UsersListing.php:223
 msgid "<a href=\"%s\" rel=\"noopener noreferrer\">Resend activation email</a>"
 msgstr ""
 
 #. translators: %s - number of users.
-#: src/Admin/UsersListing.php:333
+#: src/Admin/UsersListing.php:335
 msgid "%s user approved."
 msgid_plural "%s users approved."
 msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s - number of users.
-#: src/Admin/UsersListing.php:352
+#: src/Admin/UsersListing.php:353
 msgid "%s user unapproved."
 msgid_plural "%s users unapproved."
 msgstr[0] ""
@@ -136,11 +120,11 @@ msgid_plural "%s users were notified."
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Admin/UsersListing.php:510
+#: src/Admin/UsersListing.php:515
 msgid "You can&#8217;t unapprove users."
 msgstr ""
 
-#: src/Admin/UsersListing.php:604
+#: src/Admin/UsersListing.php:611
 msgid "You can&#8217;t edit that user."
 msgstr ""
 
@@ -175,8 +159,6 @@ msgstr ""
 msgid "New user registration on your site %s:"
 msgstr ""
 
-#. translators: %s - {user_registration_login} smart tag.
-#. translators: %s - {user_registration_login} smart tag.
 #. translators: %s - {user_registration_login} smart tag.
 #: src/EmailNotifications/Helper.php:139, src/EmailNotifications/Helper.php:176, src/EmailNotifications/Helper.php:248
 msgid "Username: %s"
@@ -224,27 +206,27 @@ msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr ""
 
 #. translators: %s - unapproved users list page URL.
-#: src/EmailNotifications/Notifications.php:410
+#: src/EmailNotifications/Notifications.php:430
 msgid "Manage user activations: %s"
 msgstr ""
 
-#: src/EmailNotifications/Notifications.php:475
+#: src/EmailNotifications/Notifications.php:496
 msgid "(Activation Required)"
 msgstr ""
 
-#: src/EmailNotifications/Notifications.php:476
+#: src/EmailNotifications/Notifications.php:497
 msgid "Account activation is required before the user can log in."
 msgstr ""
 
-#: src/EmailNotifications/Notifications.php:480
+#: src/EmailNotifications/Notifications.php:501
 msgid "You must manually activate their account."
 msgstr ""
 
-#: src/EmailNotifications/Notifications.php:485
+#: src/EmailNotifications/Notifications.php:506
 msgid "The user has been emailed a link to activate their account."
 msgstr ""
 
-#: src/EmailNotifications/Notifications.php:504
+#: src/EmailNotifications/Notifications.php:525
 msgid "Site administrator must activate your account before you can log in."
 msgstr ""
 
@@ -256,7 +238,7 @@ msgstr ""
 msgid "Check your email for the confirmation link."
 msgstr ""
 
-#: src/Frontend/Reset.php:119
+#: src/Frontend/Reset.php:121
 msgid "<strong>Error:</strong> Your password reset link appears to be invalid. Please request a new link below."
 msgstr ""
 
@@ -264,24 +246,28 @@ msgstr ""
 msgid "Username and Password are required."
 msgstr ""
 
-#: src/Process/Process.php:87
+#: src/Process/Process.php:91
 msgid "<strong>ERROR:</strong> Your account must be activated before you can log in."
 msgstr ""
 
-#: src/Process/Registration.php:56
+#: src/Process/Registration.php:58
 msgid "Email address is required."
 msgstr ""
 
-#: src/Process/Registration.php:67
+#: src/Process/Registration.php:69
 msgid "A user with that username already exists."
 msgstr ""
 
-#: src/Process/Registration.php:97
+#: src/Process/Registration.php:96
 msgid "This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr ""
 
-#: src/Process/Registration.php:111
+#: src/Process/Registration.php:109
 msgid "A user with that email already exists."
+msgstr ""
+
+#: src/Process/Registration.php:138
+msgid "Your email has been used to create a username but it contains illegal characters. Please use an email address without special characters."
 msgstr ""
 
 #: src/Process/Reset.php:75
@@ -304,7 +290,7 @@ msgstr ""
 msgid "Username or Email"
 msgstr ""
 
-#: src/Templates/Login.php:45, src/Templates/Registration.php:63, src/Templates/Reset.php:45, src/Admin/Builder/Registration.php:202
+#: src/Templates/Login.php:45, src/Templates/Registration.php:63, src/Templates/Reset.php:45, src/Admin/Builder/Registration.php:203
 msgid "Password"
 msgstr ""
 
@@ -328,15 +314,15 @@ msgstr ""
 msgid "Additional user registration options are available in the settings panel."
 msgstr ""
 
-#: src/Templates/Registration.php:37, src/Admin/Builder/Registration.php:188
+#: src/Templates/Registration.php:37, src/Admin/Builder/Registration.php:189
 msgid "Name"
 msgstr ""
 
-#: src/Templates/Registration.php:45, src/Admin/Builder/Registration.php:151
+#: src/Templates/Registration.php:45, src/Admin/Builder/Registration.php:152
 msgid "Username"
 msgstr ""
 
-#: src/Templates/Registration.php:52, src/Admin/Builder/Registration.php:171
+#: src/Templates/Registration.php:52, src/Admin/Builder/Registration.php:172
 msgid "Email"
 msgstr ""
 
@@ -360,7 +346,7 @@ msgstr ""
 msgid "Enter meta key..."
 msgstr ""
 
-#: templates/builder/custom-user-meta.php:34, src/Admin/Builder/Registration.php:154, src/Admin/Builder/Registration.php:174, src/Admin/Builder/Registration.php:191, src/Admin/Builder/Registration.php:219, src/Admin/Builder/Registration.php:233
+#: templates/builder/custom-user-meta.php:34, src/Admin/Builder/Registration.php:155, src/Admin/Builder/Registration.php:175, src/Admin/Builder/Registration.php:192, src/Admin/Builder/Registration.php:220, src/Admin/Builder/Registration.php:234
 msgid "--- Select Field ---"
 msgstr ""
 
@@ -369,159 +355,159 @@ msgstr ""
 msgid "Field #%d"
 msgstr ""
 
-#: src/Admin/Builder/Base.php:72
+#: src/Admin/Builder/Base.php:74
 msgid "Hide form if user is logged in"
 msgstr ""
 
 #. translators: %1$s - user's first name, %2$s - logout url.
-#: src/Admin/Builder/Base.php:79
+#: src/Admin/Builder/Base.php:81
 msgid "Hi %1$s, you’re already logged in. <a href=\"%2$s\">Log out</a>."
 msgstr ""
 
-#: src/Admin/Builder/Base.php:95
+#: src/Admin/Builder/Base.php:97
 msgid "Logged In Message"
 msgstr ""
 
-#: src/Admin/Builder/Base.php:102
+#: src/Admin/Builder/Base.php:104
 msgid "Message to display instead of a form for logged in users."
 msgstr ""
 
-#: src/Admin/Builder/Login.php:34
+#: src/Admin/Builder/Login.php:36
 msgid "User Registration - Login"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:51
+#: src/Admin/Builder/Registration.php:52
 msgid "Enable User Registration"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:62
+#: src/Admin/Builder/Registration.php:63
 msgid "Field Mapping"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:63
+#: src/Admin/Builder/Registration.php:64
 msgid "Connect your form fields to information in the user’s account."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:70
+#: src/Admin/Builder/Registration.php:71
 msgid "User Roles"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:78
+#: src/Admin/Builder/Registration.php:79
 msgid "User Activation & Login"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:86
+#: src/Admin/Builder/Registration.php:87
 msgid "Email Notifications"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:94
+#: src/Admin/Builder/Registration.php:95
 msgid "Custom User Meta"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:95
+#: src/Admin/Builder/Registration.php:96
 msgid "Connect additional form fields to custom fields which are associated with the user’s account."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:104
+#: src/Admin/Builder/Registration.php:105
 msgid "Conditional Logic"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:155
+#: src/Admin/Builder/Registration.php:156
 msgid "If a username is not set or provided, the user's email address will be used instead."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:205
+#: src/Admin/Builder/Registration.php:206
 msgid "Auto generate"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:216
+#: src/Admin/Builder/Registration.php:217
 msgid "Website"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:230
+#: src/Admin/Builder/Registration.php:231
 msgid "Biographical Info"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:291
+#: src/Admin/Builder/Registration.php:299
 msgid "Enable user activation"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:302
+#: src/Admin/Builder/Registration.php:310
 msgid "User Activation Method"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:306
+#: src/Admin/Builder/Registration.php:314
 msgid "User Email"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:307
+#: src/Admin/Builder/Registration.php:315
 msgid "Manual Approval"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:309
+#: src/Admin/Builder/Registration.php:317
 msgid "User Email method sends an email to the user with a link to activate their account. Manual Approval requires site admin to approve account."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:332
+#: src/Admin/Builder/Registration.php:339
 msgid "User Activation Confirmation Page"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:334
+#: src/Admin/Builder/Registration.php:341
 msgid "-- Select Page --"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:336
+#: src/Admin/Builder/Registration.php:343
 msgid "Select the page to show the user after they activate their account."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:346
+#: src/Admin/Builder/Registration.php:353
 msgid "Enable auto log in"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:348
+#: src/Admin/Builder/Registration.php:355
 msgid "Automatically log the user in after they've registered."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:370
+#: src/Admin/Builder/Registration.php:377
 msgid "<a href=\"#\" class=\"registration_email_template_toggle\">Edit Template</a>"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:385
+#: src/Admin/Builder/Registration.php:392
 msgid "Email the admin when a new user is created."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:401
+#: src/Admin/Builder/Registration.php:408
 msgid "Email the user with their account information."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:417
+#: src/Admin/Builder/Registration.php:424
 msgid "Email the user once their account has been activated."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:473
+#: src/Admin/Builder/Registration.php:480
 msgid "Create"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:474
+#: src/Admin/Builder/Registration.php:481
 msgid "Do not create"
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:476
+#: src/Admin/Builder/Registration.php:483
 msgid " a user account if..."
 msgstr ""
 
-#: src/Admin/Builder/Registration.php:477
+#: src/Admin/Builder/Registration.php:484
 msgid "User Registration setting"
 msgstr ""
 
-#: src/Admin/Builder/Reset.php:36
+#: src/Admin/Builder/Reset.php:37
 msgid "User Registration - Reset Password"
 msgstr ""
 
-#: src/Admin/Builder/Reset.php:45
+#: src/Admin/Builder/Reset.php:46
 msgid "Reset Password Email"
 msgstr ""
 
-#: src/Admin/Builder/Reset.php:46
+#: src/Admin/Builder/Reset.php:47
 msgid "You may customize the email that’s sent when a user requests a password reset."
 msgstr ""

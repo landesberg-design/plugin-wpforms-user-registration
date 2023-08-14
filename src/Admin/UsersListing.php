@@ -2,6 +2,8 @@
 
 namespace WPFormsUserRegistration\Admin;
 
+use WP_User;
+use WP_User_Query;
 use WPFormsUserRegistration\Helper;
 use WPFormsUserRegistration\SmartTags\Helpers\Helper as SmartTagHelper;
 
@@ -38,7 +40,7 @@ class UsersListing {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WP_User_Query $query Default WordPress User Query.
+	 * @param WP_User_Query $query Default WordPress User Query.
 	 */
 	public function pre_user_query( $query ) {
 
@@ -133,8 +135,8 @@ class UsersListing {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param array    $actions     Actions.
-	 * @param \WP_User $user_object User.
+	 * @param array   $actions     Actions.
+	 * @param WP_User $user_object User.
 	 *
 	 * @return array
 	 */
@@ -161,7 +163,7 @@ class UsersListing {
 			);
 
 			$actions['wpforms-unapprove'] = sprintf(
-				wp_kses( /* translators: %s - Link to unapprove users action */
+				wp_kses( /* translators: %s - Link to unapprove users action. */
 					__( '<a href="%s" class="submitunapprove" rel="noopener noreferrer">Unapprove</a>', 'wpforms-user-registration' ),
 					[
 						'a' => [
@@ -190,7 +192,7 @@ class UsersListing {
 		);
 
 		$actions['wpforms-approve'] = sprintf(
-			wp_kses( /* translators: %s - Link to approve users action */
+			wp_kses( /* translators: %s - Link to approve users action. */
 				__( '<a href="%s" class="submitapprove" rel="noopener noreferrer">Approve</a>', 'wpforms-user-registration' ),
 				[
 					'a' => [
@@ -217,7 +219,7 @@ class UsersListing {
 			);
 
 			$actions['wpforms-resend'] = sprintf(
-				wp_kses( /* translators: %s - Link to resend activation email */
+				wp_kses( /* translators: %s - Link to resend activation email. */
 					__( '<a href="%s" rel="noopener noreferrer">Resend activation email</a>', 'wpforms-user-registration' ),
 					[
 						'a' => [
@@ -309,7 +311,7 @@ class UsersListing {
 	 *
 	 * @since 2.0.0
 	 */
-	public function update_message() {
+	public function update_message() { // phpcs:ignore WPForms.PHP.HooksMethod.InvalidPlaceForAddingHooks
 
 		if ( ! isset( $_REQUEST['update'] ) || empty( $_REQUEST['count'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			return;
@@ -334,7 +336,6 @@ class UsersListing {
 						number_format_i18n( $count )
 					)
 				);
-
 				break;
 
 			case 'wpforms-unapproved':
@@ -353,7 +354,6 @@ class UsersListing {
 						number_format_i18n( $count )
 					)
 				);
-
 				break;
 
 			case 'wpforms-resent-activation':
@@ -372,9 +372,10 @@ class UsersListing {
 						number_format_i18n( $count )
 					)
 				);
-
 				break;
+
 			default:
+				// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 				$message = apply_filters_deprecated(
 					'wpforms_update_message_handler',
 					[ '', sanitize_text_field( wp_unslash( $_REQUEST['update'] ) ) ], // phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -388,6 +389,7 @@ class UsersListing {
 				 * @since 2.0.0
 				 *
 				 * @param string $message Message text.
+				 * @param string $update  Update type.
 				 */
 				$message = apply_filters( 'wpforms_user_registration_admin_users_listing_update_message_default', $message, sanitize_text_field( wp_unslash( $_REQUEST['update'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		}
@@ -435,6 +437,7 @@ class UsersListing {
 
 			wpforms_user_registration()->get( 'email_notifications' )->after_activation( $id );
 
+			// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 			do_action_deprecated(
 				'wpforms_user_approve',
 				[ $id ],
@@ -470,6 +473,7 @@ class UsersListing {
 
 			update_user_meta( $id, 'wpforms-pending', true );
 
+			// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 			do_action_deprecated(
 				'wpforms_user_unapprove',
 				[ $id ],
@@ -496,6 +500,7 @@ class UsersListing {
 	 * @since 2.0.0
 	 *
 	 * @return array User IDs.
+	 * @noinspection ForgottenDebugOutputInspection
 	 */
 	private function get_ids() {
 
@@ -591,11 +596,13 @@ class UsersListing {
 	}
 
 	/**
-	 * Check if can edit user.
+	 * Check if a user has the edit_user capability.
 	 *
 	 * @since 2.0.0
 	 *
 	 * @param int $id User ID.
+	 *
+	 * @noinspection ForgottenDebugOutputInspection
 	 */
 	private function can_edit( $id ) {
 

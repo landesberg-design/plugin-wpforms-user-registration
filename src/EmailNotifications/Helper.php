@@ -31,9 +31,9 @@ class Helper {
 	 */
 	public static function settings_html( $form_data, $field, $default_subject, $default_message, $show ) {
 
-		$show = $show ? '' : 'display:none;';
+		$display = $show ? '' : 'display:none;';
 
-		$output = '<div id="wpforms-notifications-block-' . esc_attr( $field ) . '" class="wpforms-user-registration-email-notifications-template" style="' . esc_attr( $show ) . '">';
+		$output = '<div id="wpforms-notifications-block-' . esc_attr( $field ) . '" class="wpforms-user-registration-email-notifications-template" style="' . esc_attr( $display ) . '">';
 
 		$output .= wpforms_panel_field(
 			'text',

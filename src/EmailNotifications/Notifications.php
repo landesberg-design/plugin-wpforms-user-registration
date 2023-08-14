@@ -2,8 +2,12 @@
 
 namespace WPFormsUserRegistration\EmailNotifications;
 
+use WP_User;
 use WPForms\Emails\Mailer;
+use WPForms\Emails\Templates\General;
+use WPForms_WP_Emails;
 use WPFormsUserRegistration\Process\Helpers\UserRegistration;
+use WPFormsUserRegistration\SmartTags\Helpers\Helper as SmartTagsHelper;
 
 /**
  * Notifications class.
@@ -62,6 +66,8 @@ class Notifications {
 			return;
 		}
 
+		SmartTagsHelper::set_user( $user );
+
 		$activation = $this->get_form_activation_type( $this->form_data['settings'] );
 
 		// Send user email notification is enabled OR if user activation is
@@ -90,6 +96,8 @@ class Notifications {
 	 * @since 2.0.0
 	 *
 	 * @param string $user_id User ID.
+	 *
+	 * @noinspection PhpUnused
 	 */
 	public function after_activation( $user_id ) {
 
@@ -135,7 +143,7 @@ class Notifications {
 		 *     @type string   $address User email.
 		 *     @type string   $subject Email subject.
 		 *     @type string   $message Email body.
-		 *     @type \WP_User $user    WP User object.
+		 *     @type WP_User $user    WP User object.
 		 * }
 		 */
 		$email = apply_filters( 'wpforms_user_registration_email_notifications_after_activation_user_email', $email );
@@ -152,6 +160,8 @@ class Notifications {
 	 * @since 2.0.0
 	 *
 	 * @param string $user_id User ID.
+	 *
+	 * @noinspection PhpUnused
 	 */
 	public function resend_activation( $user_id ) {
 
@@ -187,6 +197,8 @@ class Notifications {
 	 * @param array  $form_data The information for the form.
 	 * @param array  $fields    The fields that have been submitted.
 	 * @param int    $entry_id  The entry id.
+	 *
+	 * @noinspection PhpUnused
 	 */
 	public function reset_password( $user_id, $form_data, $fields, $entry_id ) {
 
@@ -218,7 +230,7 @@ class Notifications {
 		 *     @type string   $address User email.
 		 *     @type string   $subject Email subject.
 		 *     @type string   $message Email body.
-		 *     @type \WP_User $user    WP User object.
+		 *     @type WP_User $user    WP User object.
 		 * }
 		 */
 		$email = apply_filters( 'wpforms_user_registration_email_notifications_reset_password_user_email', $email );
@@ -240,7 +252,7 @@ class Notifications {
 
 		if ( get_option( Helper::LEGACY_EMAILS ) === '1' && wpforms_setting( 'user-registration-template', 'legacy' ) === 'legacy' ) {
 
-			( new \WPForms_WP_Emails() )->send(
+			( new WPForms_WP_Emails() )->send(
 				$email['address'],
 				$email['subject'],
 				$email['message']
@@ -262,14 +274,14 @@ class Notifications {
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param \WPForms\Emails\Templates\General $template Template object.
-		 * @param array                             $email    {
+		 * @param General $template Template object.
+		 * @param array   $email    Email data {
 		 *     Email data.
 		 *
 		 *     @type string   $address Admin email.
 		 *     @type string   $subject Email subject.
 		 *     @type string   $message Email body.
-		 *     @type \WP_User $user    WP User object.
+		 *     @type WP_User  $user    WP User object.
 		 * }
 		 */
 		$template = apply_filters( 'wpforms_user_registration_email_notifications_send_emails_template', $template, $email );
@@ -290,11 +302,11 @@ class Notifications {
 	/**
 	 * Get User.
 	 *
-	 * @param string $user_id User ID.
-	 *
 	 * @since 2.0.0
 	 *
-	 * @return false|\WP_User
+	 * @param string $user_id User ID.
+	 *
+	 * @return false|WP_User
 	 */
 	private function get_user( $user_id ) {
 
@@ -318,7 +330,9 @@ class Notifications {
 			return [];
 		}
 
-		return wpforms()->get( 'form' )->get( $form_id, [ 'content_only' => true ] );
+		$form_obj = wpforms()->get( 'form' );
+
+		return $form_obj ? $form_obj->get( $form_id, [ 'content_only' => true ] ) : [];
 	}
 
 	/**
@@ -348,7 +362,13 @@ class Notifications {
 			return [];
 		}
 
-		$entry = wpforms()->get( 'entry' )->get( $this->entry_id );
+		$entry_obj = wpforms()->get( 'entry' );
+
+		if ( $entry_obj === null ) {
+			return [];
+		}
+
+		$entry = $entry_obj->get( $this->entry_id );
 
 		if ( empty( $entry ) || empty( $entry->fields ) ) {
 			return [];
@@ -394,9 +414,9 @@ class Notifications {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WP_User $user           User.
-	 * @param string   $plaintext_pass Password.
-	 * @param string   $activation     Activation type.
+	 * @param WP_User $user           User.
+	 * @param string  $plaintext_pass Password.
+	 * @param string  $activation     Activation type.
 	 */
 	private function admin_notification( $user, $plaintext_pass, $activation ) {
 
@@ -410,7 +430,7 @@ class Notifications {
 		$message .= "\r\n\r\n" . sprintf( esc_html__( 'Manage user activations: %s', 'wpforms-user-registration' ), admin_url( 'users.php' ) ) . "\r\n";
 
 		/**
-		 * This filter allows overwriting an site admin email who will receive new user registration email.
+		 * This filter allows overwriting site admin email who will receive new user registration email.
 		 *
 		 * @since 2.0.0
 		 *
@@ -427,6 +447,7 @@ class Notifications {
 			'activation' => $activation,
 		];
 
+		// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 		$email = apply_filters_deprecated(
 			'wpforms_user_registration_email_admin',
 			[ $email ],
@@ -445,7 +466,7 @@ class Notifications {
 		 *     @type string   $address    Admin email.
 		 *     @type string   $subject    Email subject.
 		 *     @type string   $message    Email body.
-		 *     @type \WP_User $user       WP User object.
+		 *     @type WP_User $user       WP User object.
 		 *     @type string   $password   Password.
 		 *     @type string   $activation Activation link.
 		 * }
@@ -492,9 +513,9 @@ class Notifications {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WP_User $user           User.
-	 * @param string   $plaintext_pass Password.
-	 * @param string   $activation     Activation type.
+	 * @param WP_User $user           User.
+	 * @param string  $plaintext_pass Password.
+	 * @param string  $activation     Activation type.
 	 */
 	private function user_notification( $user, $plaintext_pass, $activation ) {
 
@@ -513,6 +534,7 @@ class Notifications {
 			'activation' => $activation,
 		];
 
+		// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 		$email = apply_filters_deprecated(
 			'wpforms_user_registration_email_user',
 			[ $email ],
@@ -531,7 +553,7 @@ class Notifications {
 		 *     @type string   $address    Admin email.
 		 *     @type string   $subject    Email subject.
 		 *     @type string   $message    Email body.
-		 *     @type \WP_User $user       WP User object.
+		 *     @type WP_User $user       WP User object.
 		 *     @type string   $password   Password.
 		 *     @type string   $activation Activation link.
 		 * }
@@ -546,7 +568,7 @@ class Notifications {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WP_User $user User type.
+	 * @param WP_User $user User type.
 	 */
 	private function user_activation( $user ) {
 
@@ -575,7 +597,7 @@ class Notifications {
 		 *     @type string   $address    Admin email.
 		 *     @type string   $subject    Email subject.
 		 *     @type string   $message    Email body.
-		 *     @type \WP_User $user       WP User object.
+		 *     @type WP_User $user       WP User object.
 		 *     @type string   $activation Activation link.
 		 * }
 		 */

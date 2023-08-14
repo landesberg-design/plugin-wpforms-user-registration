@@ -52,7 +52,7 @@ class Reset {
 	}
 
 	/**
-	 * Display custom confirmation message depending of stage of resetting password.
+	 * Display custom confirmation message depending on the stage of resetting password.
 	 *
 	 * @since 2.0.0
 	 *
@@ -70,7 +70,7 @@ class Reset {
 		// phpcs:disable
 		if ( UserReset::is_reset_in_progress() ) {
 			/**
-			 * This filter allows overwriting an reset password completed confirmation message.
+			 * This filter allows overwriting a reset password completed confirmation message.
 			 *
 			 * This message displays on the reset password form after the user submitted new password.
 			 *
@@ -84,9 +84,9 @@ class Reset {
 		// phpcs:enable
 
 		/**
-		 * This filter allows overwriting an reset password confirmation message.
+		 * This filter allows overwriting a reset password confirmation message.
 		 *
-		 * This message displays on the reset password form after the user submitted an username.
+		 * This message displays on the reset password form after the user submitted a username.
 		 *
 		 * @since 2.0.0
 		 *
@@ -106,6 +106,8 @@ class Reset {
 	 * @param bool  $title       Whether to display form title.
 	 * @param bool  $description Whether to display form description.
 	 * @param array $errors      List of all errors filled in WPForms_Process::process().
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function invalid_link_message( $form_data, $deprecated, $title, $description, $errors ) {
 
@@ -133,6 +135,12 @@ class Reset {
 		 */
 		$message = apply_filters( 'wpforms_user_registration_frontend_reset_invalid_link_message', $message );
 
-		wpforms()->get( 'frontend' )->form_error( 'header', $message );
+		$frontend_obj = wpforms()->get( 'frontend' );
+
+		if ( ! $frontend_obj ) {
+			return;
+		}
+
+		$frontend_obj->form_error( 'header', $message );
 	}
 }

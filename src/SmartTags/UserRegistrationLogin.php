@@ -9,6 +9,8 @@ use WPFormsUserRegistration\SmartTags\Helpers\Helper;
  * Class UserRegistrationLogin.
  *
  * @since 2.0.0
+ *
+ * @noinspection PhpUnused
  */
 class UserRegistrationLogin extends SmartTag {
 

@@ -2,6 +2,8 @@
 
 namespace WPFormsUserRegistration;
 
+use stdClass;
+use WPForms_Updater;
 use WPFormsUserRegistration\Admin\Settings;
 use WPFormsUserRegistration\EmailNotifications\Notifications;
 use WPFormsUserRegistration\Frontend\Reset;
@@ -25,22 +27,33 @@ class Plugin {
 	private $email_notifications;
 
 	/**
-	 * Plugin constructor.
+	 * Get a single instance of the addon.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return Plugin
 	 */
-	private function __construct() {
+	public static function get_instance() {
 
-		$this->hooks();
-		$this->init_components();
+		static $instance;
+
+		if ( ! $instance ) {
+			$instance = new self();
+
+			$instance->init();
+		}
+
+		return $instance;
 	}
 
 	/**
-	 * Load plugin components.
+	 * Init class.
 	 *
 	 * @since 2.0.0
+	 *
+	 * @return Plugin
 	 */
-	private function init_components() {
+	private function init() {
 
 		( new Migrations\Migrations() )->init();
 
@@ -58,6 +71,10 @@ class Plugin {
 		( new SmartTags() )->hooks();
 
 		$this->email_notifications = new Notifications();
+
+		$this->hooks();
+
+		return $this;
 	}
 
 	/**
@@ -69,6 +86,30 @@ class Plugin {
 
 		add_action( 'init', [ $this, 'load_templates' ], 15 );
 		add_action( 'init', [ $this, 'logout_unapproved_users' ] );
+
+		add_action( 'wpforms_updater', [ $this, 'updater' ] );
+	}
+
+	/**
+	 * Load the plugin updater.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $key License key.
+	 */
+	public function updater( $key ) {
+
+		new WPForms_Updater(
+			[
+				'plugin_name' => 'WPForms User Registration',
+				'plugin_slug' => 'wpforms-user-registration',
+				'plugin_path' => plugin_basename( WPFORMS_USER_REGISTRATION_FILE ),
+				'plugin_url'  => trailingslashit( WPFORMS_USER_REGISTRATION_URL ),
+				'remote_url'  => WPFORMS_UPDATER_API,
+				'version'     => WPFORMS_USER_REGISTRATION_VERSION,
+				'key'         => $key,
+			]
+		);
 	}
 
 	/**
@@ -82,25 +123,7 @@ class Plugin {
 	 */
 	public function get( $property_name ) {
 
-		return property_exists( $this, $property_name ) ? $this->{$property_name} : new \stdClass();
-	}
-
-	/**
-	 * Get a single instance of the addon.
-	 *
-	 * @since 2.0.0
-	 *
-	 * @return Plugin
-	 */
-	public static function get_instance() {
-
-		static $instance;
-
-		if ( ! $instance ) {
-			$instance = new Plugin();
-		}
-
-		return $instance;
+		return property_exists( $this, $property_name ) ? $this->{$property_name} : new stdClass();
 	}
 
 	/**

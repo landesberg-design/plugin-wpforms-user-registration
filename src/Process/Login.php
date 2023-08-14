@@ -51,6 +51,7 @@ class Login extends Base {
 			'remember'      => ! isset( $login_fields['remember_me'] ) || $login_fields['remember_me'],
 		];
 
+		// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 		$credentials = apply_filters_deprecated(
 			'wpforms_user_registration_login_creds',
 			[ $credentials, $fields, $entry, $form_data ],
@@ -68,11 +69,11 @@ class Login extends Base {
 		 *
 		 *     @type string $user_login    User login.
 		 *     @type string $user_password Password.
-		 *     @type bool   $remember      Is needs to be remember.
+		 *     @type bool   $remember      Is needs to be remembered.
 		 * }
-		 * @param array $fields    The fields that have been submitted.
-		 * @param array $entry     The post data submitted by the form.
-		 * @param array $form_data The information for the form.
+		 * @param array $fields      The fields that have been submitted.
+		 * @param array $entry       The post data submitted by the form.
+		 * @param array $form_data   The information for the form.
 		 */
 		$credentials = apply_filters( 'wpforms_user_registration_process_login_process_credentials', $credentials, $fields, $entry, $form_data );
 
@@ -88,6 +89,7 @@ class Login extends Base {
 
 		$error_code = $user->get_error_code();
 
+		// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 		$error_message = apply_filters_deprecated(
 			'wpforms_user_registration_login_error',
 			[ $user->get_error_message(), $error_code ],
@@ -126,6 +128,9 @@ class Login extends Base {
 	 * @param array $form_data Form data.
 	 *
 	 * @return array
+	 *
+	 * @noinspection PhpUnused
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function process_after_filter( $fields, $entry, $form_data ) {
 

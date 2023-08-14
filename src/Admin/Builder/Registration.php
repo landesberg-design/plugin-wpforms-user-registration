@@ -2,6 +2,7 @@
 
 namespace WPFormsUserRegistration\Admin\Builder;
 
+use WPForms_Builder_Panel_Settings;
 use WPFormsUserRegistration\EmailNotifications\Helper as NotificationsHelper;
 use WPFormsUserRegistration\Process\Helpers\UserRegistration as RegistrationHelper;
 
@@ -24,7 +25,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 */
 	public function settings_content( $instance ) {
 
@@ -118,7 +119,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 *
 	 * @return string
 	 */
@@ -132,7 +133,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 *
 	 * @return string
 	 */
@@ -243,7 +244,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 *
 	 * @return string
 	 */
@@ -251,13 +252,14 @@ class Registration extends Base {
 
 		// Role.
 		$editable_roles = array_reverse( get_editable_roles() );
-		$roles_options  = [];
+
+		$roles_options = [];
 
 		foreach ( $editable_roles as $role => $details ) {
 			$roles_options[ $role ] = translate_user_role( $details['name'] );
 		}
 
-		return wpforms_panel_field(
+		$wpforms_panel_field = wpforms_panel_field(
 			'select',
 			'settings',
 			'registration_role',
@@ -269,6 +271,12 @@ class Registration extends Base {
 			],
 			false
 		);
+
+		if ( ! current_user_can( 'create_users' ) ) {
+			$wpforms_panel_field = str_replace( '<select ', '<select disabled ', $wpforms_panel_field );
+		}
+
+		return $wpforms_panel_field;
 	}
 
 	/**
@@ -276,7 +284,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 *
 	 * @return string
 	 */
@@ -313,7 +321,6 @@ class Registration extends Base {
 
 		$output .= NotificationsHelper::settings_html( $instance->form_data, 'registration_email_user_activation', NotificationsHelper::default_user_activation_subject(), NotificationsHelper::default_user_activation_message(), RegistrationHelper::get_activation_type( $instance->form_data['settings'] ) !== 'admin' );
 
-		// TODO: replace on wpforms_get_pages_list() function when it exists in the core.
 		$p     = [];
 		$pages = get_pages();
 
@@ -360,7 +367,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 *
 	 * @return string
 	 */
@@ -432,7 +439,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 *
 	 * @return string
 	 */
@@ -456,7 +463,7 @@ class Registration extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 *
 	 * @return string
 	 */

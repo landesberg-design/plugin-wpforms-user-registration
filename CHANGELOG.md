@@ -1,6 +1,20 @@
 Change Log
 All notable changes to this project will be documented in this file, formatted via [this recommendation](https://keepachangelog.com/).
 
+## [2.2.0] - 2023-08-08
+### Changed
+- Minimum WPForms version supported is 1.8.3.
+- The `{site_name}` smart tag has been moved to the main WPForms plugin.
+
+## [2.1.2] - 2023-07-27
+### Fixed
+- Compatibility with WPForms Access controls.
+
+## [2.1.1] - 2023-07-03
+### Fixed
+- Username validation displayed a misleading error message when the username was automatically created from the email address.
+- Compatibility with WPForms 1.8.2.2.
+
 ## [2.1.0] - 2022-08-29
 ### Added
 - New filter `wpforms_user_registration_process_registration_get_data` that allow modifying user data before registration.

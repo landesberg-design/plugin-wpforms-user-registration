@@ -3,7 +3,7 @@
         'name' => 'wpforms/user-registration',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '750a11c9c606737dc05489bb18bca278f8ad7355',
+        'reference' => '25518d9d5f98a8954ea8f1475d502e525d28d55e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'wpforms/user-registration' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '750a11c9c606737dc05489bb18bca278f8ad7355',
+            'reference' => '25518d9d5f98a8954ea8f1475d502e525d28d55e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

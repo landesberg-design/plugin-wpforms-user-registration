@@ -64,7 +64,7 @@ class Reset extends Base {
 
 			if ( ! UserReset::is_reset_in_progress() ) {
 				/**
-				 * This filter allows overwriting an reset password no user provided error message.
+				 * This filter allows overwriting a reset password no user provided error message.
 				 *
 				 * This message displayed on the front page if the user ot entered Username or Email Address.
 				 *
@@ -129,6 +129,8 @@ class Reset extends Base {
 	 * @param array $entry     The post data submitted by the form.
 	 * @param array $form_data The information for the form.
 	 * @param int   $entry_id  The entry ID.
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function process_complete( $fields, $entry, $form_data, $entry_id ) {
 
@@ -160,6 +162,8 @@ class Reset extends Base {
 	 * @param array $form_data Form data.
 	 *
 	 * @return array
+	 * @noinspection PhpUnused
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	public function process_after_filter( $fields, $entry, $form_data ) {
 
@@ -183,6 +187,8 @@ class Reset extends Base {
 	 * @param array $fields    The fields that have been submitted.
 	 * @param array $form_data The information for the form.
 	 * @param int   $entry_id  The entry ID.
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
 	private function reset_password( $fields, $form_data, $entry_id ) {
 

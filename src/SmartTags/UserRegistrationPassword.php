@@ -9,6 +9,8 @@ use WPFormsUserRegistration\Process\Helpers\UserRegistration;
  * Class UserRegistrationPassword.
  *
  * @since 2.0.0
+ *
+ * @noinspection PhpUnused
  */
 class UserRegistrationPassword extends SmartTag {
 

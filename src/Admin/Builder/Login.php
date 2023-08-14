@@ -2,6 +2,8 @@
 
 namespace WPFormsUserRegistration\Admin\Builder;
 
+use WPForms_Builder_Panel_Settings;
+
 /**
  * Login form class for builder.
  *
@@ -21,7 +23,7 @@ class Login extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 */
 	public function settings_content( $instance ) {
 

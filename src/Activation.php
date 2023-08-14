@@ -59,6 +59,7 @@ class Activation {
 
 		wpforms_user_registration()->get( 'email_notifications' )->after_activation( $user_id );
 
+		// phpcs:ignore WPForms.Comments.PHPDocHooks.RequiredHookDocumentation
 		do_action_deprecated(
 			'wpforms_user_approve',
 			[ $user_id ],

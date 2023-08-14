@@ -2,6 +2,8 @@
 
 namespace WPFormsUserRegistration\Process\Helpers;
 
+// phpcs:ignore WPForms.PHP.UseStatement.UnusedUseStatement
+use WP_User;
 use WPFormsUserRegistration\Admin\Builder\Reset as BuilderReset;
 
 /**
@@ -96,7 +98,7 @@ class UserReset {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @return bool|\WP_User
+	 * @return bool|WP_User
 	 */
 	public static function get_user() {
 

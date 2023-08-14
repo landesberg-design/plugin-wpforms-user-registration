@@ -2,6 +2,8 @@
 
 namespace WPFormsUserRegistration\Process;
 
+use WP_Error;
+use WP_User;
 use WPFormsUserRegistration\Process\Helpers\UserReset;
 
 /**
@@ -32,7 +34,7 @@ class Process {
 	 */
 	public function hooks() {
 
-		add_action( 'wpforms_user_registration_process_registration_process_completed_after', [ $this, 'post_submissions_current_user' ], 10 );
+		add_action( 'wpforms_user_registration_process_registration_process_completed_after', [ $this, 'post_submissions_current_user' ] );
 		add_filter( 'wpforms_process_before_form_data', [ UserReset::class, 'filter_form_fields' ], 999 );
 		add_filter( 'wp_authenticate_user', [ $this, 'user_authenticate' ] );
 	}
@@ -44,12 +46,14 @@ class Process {
 	 * @since 2.0.0
 	 *
 	 * @param int $user_id User ID.
+	 *
+	 * @noinspection PhpUnusedParameterInspection
 	 */
-	public function post_submissions_current_user( $user_id ) {
+	public function post_submissions_current_user( $user_id ) { // phpcs:ignore WPForms.PHP.HooksMethod.InvalidPlaceForAddingHooks
 
 		add_filter(
 			'wpforms_post_submissions_post_args',
-			function ( $post_args, $form_data, $fields ) use ( $user_id ) {
+			static function ( $post_args, $form_data, $fields ) use ( $user_id ) {
 
 				if ( ! empty( $form_data['settings']['post_submissions_author'] ) && $form_data['settings']['post_submissions_author'] === 'current_user' ) {
 					$post_args['post_author'] = $user_id;
@@ -67,9 +71,9 @@ class Process {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WP_User|\WP_Error $userdata User data.
+	 * @param WP_User|WP_Error $userdata User data.
 	 *
-	 * @return \WP_User|\WP_Error
+	 * @return WP_User|WP_Error
 	 */
 	public function user_authenticate( $userdata ) {
 
@@ -81,7 +85,7 @@ class Process {
 			return $userdata;
 		}
 
-		return new \WP_Error(
+		return new WP_Error(
 			'wpforms_confirmation_error',
 			wp_kses(
 				__( '<strong>ERROR:</strong> Your account must be activated before you can log in.', 'wpforms-user-registration' ),

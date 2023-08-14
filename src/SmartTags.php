@@ -31,7 +31,6 @@ class SmartTags {
 	 */
 	public function tags( $tags ) {
 
-		$tags['site_name']                        = esc_html__( 'Site Name', 'wpforms-user-registration' );
 		$tags['user_registration_login']          = esc_html__( 'User Registration Login', 'wpforms-user-registration' );
 		$tags['user_registration_email']          = esc_html__( 'User Registration Email', 'wpforms-user-registration' );
 		$tags['user_registration_password']       = esc_html__( 'User Registration Password', 'wpforms-user-registration' );

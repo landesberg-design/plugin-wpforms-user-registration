@@ -2,6 +2,7 @@
 
 namespace WPFormsUserRegistration\Admin\Builder;
 
+use WPForms_Builder_Panel_Settings;
 use WPFormsUserRegistration\EmailNotifications\Helper as NotificationsHelper;
 
 /**
@@ -23,7 +24,7 @@ class Reset extends Base {
 	 *
 	 * @since 2.0.0
 	 *
-	 * @param \WPForms_Builder_Panel_Settings $instance Settings instance.
+	 * @param WPForms_Builder_Panel_Settings $instance Settings instance.
 	 */
 	public function settings_content( $instance ) {
 
