@@ -3,11 +3,11 @@
  * Plugin Name:       WPForms User Registration
  * Plugin URI:        https://wpforms.com
  * Description:       User Registration, Login and Reset Password forms with WPForms.
- * Requires at least: 5.2
- * Requires PHP:      5.6
+ * Requires at least: 5.5
+ * Requires PHP:      7.0
  * Author:            WPForms
  * Author URI:        https://wpforms.com
- * Version:           2.2.0
+ * Version:           2.3.0
  * Text Domain:       wpforms-user-registration
  * Domain Path:       languages
  *
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-const WPFORMS_USER_REGISTRATION_VERSION = '2.2.0';
+const WPFORMS_USER_REGISTRATION_VERSION = '2.3.0';
 
 /**
  * Plugin file.
@@ -70,7 +70,7 @@ function wpforms_user_registration_load() {
 
 	$requirements = [
 		'file'    => WPFORMS_USER_REGISTRATION_FILE,
-		'wpforms' => '1.8.3',
+		'wpforms' => '1.8.4',
 	];
 
 	if ( ! function_exists( 'wpforms_requirements' ) || ! wpforms_requirements( $requirements ) ) {

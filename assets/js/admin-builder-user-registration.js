@@ -67,7 +67,56 @@ var WPFormsUserRegistration = window.WPFormsUserRegistration || ( function( $ ) 
 				.on( 'change', '#wpforms-panel-field-settings-registration_enable', app.registrationToggle )
 				.on( 'change', '#wpforms-panel-field-settings-registration_activation, #wpforms-panel-field-settings-registration_activation_method', app.activationToggle )
 				.on( 'click', '.registration_email_template_toggle', app.toggleEmailTemplate )
-				.on( 'change', '.user-registration-hide-form-logged-user input[type="checkbox"]', app.hideMessageToggle );
+				.on( 'change', '.user-registration-hide-form-logged-user input[type="checkbox"]', app.hideMessageToggle )
+				.on( 'wpformsBeforeSave', app.showRequiredFieldsPopup );
+		},
+
+		/**
+		 * Check if addon is enabled.
+		 *
+		 * @since 2.3.0
+		 *
+		 * @return {boolean} True if addon is enabled, false otherwise.
+		 */
+		isUserRegistrationEnabled() {
+			return $( '#wpforms-panel-field-settings-registration_enable' ).is( ':checked' );
+		},
+
+		/**
+		 * Show warning popup with message.
+		 *
+		 * @since 2.3.0
+		 *
+		 * @param {Event} event Event.
+		 */
+		showRequiredFieldsPopup( event ) {
+			if ( ! app.isUserRegistrationEnabled() ) {
+				return;
+			}
+
+			let hasErrors = false;
+
+			if ( $( '#wpforms-panel-field-settings-registration_email' ).val().trim().length === 0 ) {
+				hasErrors = true;
+			}
+
+			if ( hasErrors ) {
+				$.alert( {
+					title: wpforms_builder.heads_up,
+					content: wpforms_builder.user_registration_required_email,
+					icon: 'fa fa-exclamation-circle',
+					type: 'orange',
+					buttons: {
+						confirm: {
+							text: wpforms_builder.ok,
+							btnClass: 'btn-confirm',
+							keys: [ 'enter' ],
+						},
+					},
+				} );
+
+				event.preventDefault();
+			}
 		},
 
 		/**
@@ -84,7 +133,7 @@ var WPFormsUserRegistration = window.WPFormsUserRegistration || ( function( $ ) 
 				return;
 			}
 
-			if ( $enable.is( ':checked' ) ) {
+			if ( app.isUserRegistrationEnabled() ) {
 				$settings.show();
 			} else {
 				$settings.hide();

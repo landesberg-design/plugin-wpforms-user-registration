@@ -38,33 +38,48 @@ class Builder {
 		add_filter( 'wpforms_builder_strings', [ $this, 'builder_strings' ] );
 		add_filter( 'wpforms_builder_settings_sections', [ $this, 'settings_sections' ], 20, 2 );
 		add_filter( 'wpforms_helpers_templates_include_html_located', [ $this, 'templates' ], 10, 2 );
-		add_filter(
-			'wpforms_save_form_args',
-			static function ( $form, $data, $args ) {
-				if ( ! current_user_can( 'create_users' ) ) {
-					$prev_saved_form      = get_post( $form['ID'] );
-					$prev_saved_form_data = wpforms_decode( $prev_saved_form->post_content );
-
-					if ( ! empty( $prev_saved_form_data['settings']['registration_role'] ) ) {
-						$role = $prev_saved_form_data['settings']['registration_role'];
-					} else {
-						$role = get_option( 'default_role' );
-					}
-
-					$data['settings']['registration_role'] = $role;
-					$form['post_content']                  = wpforms_encode( $data );
-				}
-
-				return $form;
-			},
-			10,
-			3
-		);
+		add_filter( 'wpforms_save_form_args', [ $this, 'save_form' ], 10, 3 );
 
 		foreach ( $this->get_builders() as $builder ) {
 
 			add_action( 'wpforms_form_settings_panel_content', [ $builder, 'settings_content' ], 20 );
 		}
+	}
+
+	/**
+	 * Save form arguments filter.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param array $form Form to be saved.
+	 * @param array $data Initial form settings data.
+	 * @param array $args Form updating args.
+	 *
+	 * @return array
+	 * @noinspection PhpMissingParamTypeInspection
+	 * @noinspection PhpUnusedParameterInspection
+	 */
+	public function save_form( $form, $data, $args ): array { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
+
+		$form_handler = wpforms()->get( 'form' );
+
+		if ( $form_handler === null || current_user_can( 'create_users' ) ) {
+			return $form;
+		}
+
+		$form_data       = json_decode( stripslashes( $form['post_content'] ), true );
+		$saved_form_data = ! empty( $data['id'] ) ? $form_handler->get( $data['id'], [ 'content_only' => true ] ) : [];
+
+		if ( ! empty( $saved_form_data['settings']['registration_role'] ) ) {
+			$role = $saved_form_data['settings']['registration_role'];
+		} else {
+			$role = get_option( 'default_role' );
+		}
+
+		$form_data['settings']['registration_role'] = $role;
+		$form['post_content']                       = wpforms_encode( $form_data );
+
+		return $form;
 	}
 
 	/**
@@ -103,8 +118,9 @@ class Builder {
 	 */
 	public function builder_strings( $strings ) {
 
-		$strings['user_registration_edit_template'] = esc_html__( 'Edit Template', 'wpforms-user-registration' );
-		$strings['user_registration_hide_template'] = esc_html__( 'Hide Template', 'wpforms-user-registration' );
+		$strings['user_registration_edit_template']  = esc_html__( 'Edit Template', 'wpforms-user-registration' );
+		$strings['user_registration_hide_template']  = esc_html__( 'Hide Template', 'wpforms-user-registration' );
+		$strings['user_registration_required_email'] = esc_html__( 'You started to configure the User Registration addon. Please fill out all required fields or disable the addon.', 'wpforms-user-registration' );
 
 		return $strings;
 	}
