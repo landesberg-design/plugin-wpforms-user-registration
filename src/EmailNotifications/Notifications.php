@@ -4,7 +4,7 @@ namespace WPFormsUserRegistration\EmailNotifications;
 
 use WP_User;
 use WPForms\Emails\Mailer;
-use WPForms\Emails\Templates\General;
+use WPForms\Emails\Helpers as EmailHelpers;
 use WPForms_WP_Emails;
 use WPFormsUserRegistration\Process\Helpers\UserRegistration;
 use WPFormsUserRegistration\SmartTags\Helpers\Helper as SmartTagsHelper;
@@ -261,21 +261,41 @@ class Notifications {
 			return;
 		}
 
+		// Extract the email message.
+		$message = $email['message'];
+
+		// If it's not a plain text template, replace line breaks.
+		if ( ! EmailHelpers::is_plain_text_template() ) {
+			// Replace line breaks with <br/> tags.
+			$message = str_replace( "\r\n", '<br/>', $message );
+			// Wrap the message in a table row.
+			$message = sprintf( '<tr><td class="field-name field-value">%1$s</td></tr>', $message );
+		}
+
 		$args = [
 			'body' => [
-				'message' => str_replace( "\r\n", '<br/>', $email['message'] ),
+				'message' => $message,
 			],
 		];
 
-		$template = ( new Templates\General() )->set_args( $args );
+		/**
+		 * Filter to customize the email template name independently of the global setting.
+		 *
+		 * @since 2.4.0
+		 *
+		 * @param string $template_name The template name to be used.
+		 */
+		$template_name  = apply_filters( 'wpforms_user_registration_email_notifications_template_name', EmailHelpers::get_current_template_name() );
+		$template_class = EmailHelpers::get_current_template_class( $template_name, __NAMESPACE__ . '\Templates\General' );
+		$template       = ( new $template_class() )->set_args( $args );
 
 		/**
 		 * This filter allows overwriting modern email template.
 		 *
 		 * @since 2.0.0
 		 *
-		 * @param General $template Template object.
-		 * @param array   $email    Email data {
+		 * @param object $template Template object.
+		 * @param array  $email    Email data {
 		 *     Email data.
 		 *
 		 *     @type string   $address Admin email.

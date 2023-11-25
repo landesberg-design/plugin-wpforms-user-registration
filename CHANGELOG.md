@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file, formatted via [this recommendation](https://keepachangelog.com/).
 
+## [2.4.0] - 2023-11-08
+### Added
+- Compatibility with WPForms 1.8.5.
+
+### Changed
+- Minimum WPForms version supported is 1.8.5.
+
 ## [2.3.0] - 2023-10-24
 ### IMPORTANT
 - Support for PHP 5.6 has been discontinued. If you are running PHP 5.6, you MUST upgrade PHP before installing WPForms User Registration 2.3.0. Failure to do that will disable WPForms User Registration functionality.
