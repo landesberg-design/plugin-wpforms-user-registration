@@ -247,8 +247,8 @@ class Notifications {
 	 */
 	private function send( $email ) {
 
-		$email['message'] = wpforms_process_smart_tags( $email['message'], $this->form_data, $this->fields, $this->entry_id );
-		$email['subject'] = wpforms_process_smart_tags( $email['subject'], $this->form_data, $this->fields, $this->entry_id );
+		$email['message'] = wpforms_process_smart_tags( $email['message'], $this->form_data, $this->fields, $this->entry_id, 'user-registration-notification' );
+		$email['subject'] = wpforms_process_smart_tags( $email['subject'], $this->form_data, $this->fields, $this->entry_id, 'user-registration-notification' );
 
 		if ( get_option( Helper::LEGACY_EMAILS ) === '1' && wpforms_setting( 'user-registration-template', 'legacy' ) === 'legacy' ) {
 

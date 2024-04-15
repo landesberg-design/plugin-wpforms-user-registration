@@ -174,7 +174,12 @@ class Reset extends Base {
 		$password_field = wpforms_get_form_fields_by_meta( 'nickname', 'password', $form_data );
 		$password_field = reset( $password_field );
 
-		$this->password = isset( $password_field['id'] ) && ! empty( $fields[ $password_field['id'] ]['value'] ) ? $fields[ $password_field['id'] ]['value'] : '';
+		// If no password field found, return fields as is.
+		if ( empty( $password_field ) ) {
+			return $fields;
+		}
+
+		$this->password = $fields[ $password_field['id'] ]['value_raw'] ?? '';
 
 		return $this->hide_password_value( $fields );
 	}

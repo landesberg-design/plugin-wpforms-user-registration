@@ -211,6 +211,8 @@ class Registration extends Base {
 
 		$this->add_custom_meta( $user_id, $fields, $form_data );
 
+		$this->add_entry_meta( $entry_id, $user_id, $form_data['id'] );
+
 		$this->set_author_id_for_uploaded_media( $user_id, $fields );
 
 		$this->set_pending( $user_id, $form_data, $entry_id );
@@ -261,7 +263,7 @@ class Registration extends Base {
 
 		$password_field_id = isset( $form_data['settings']['registration_password'] ) && $form_data['settings']['registration_password'] !== '' ? absint( $form_data['settings']['registration_password'] ) : '';
 
-		UserRegistration::set_password( ! empty( $fields[ $password_field_id ]['value'] ) ? $fields[ $password_field_id ]['value'] : '' );
+		UserRegistration::set_password( $fields[ $password_field_id ]['value_raw'] ?? '' );
 
 		return $this->hide_password_value( $fields );
 	}
@@ -534,6 +536,30 @@ class Registration extends Base {
 
 			update_user_meta( $user_id, $key, $value );
 		}
+	}
+
+	/**
+	 * Add user_id entry meta.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param int $entry_id Entry ID.
+	 * @param int $user_id  User ID.
+	 * @param int $form_id  Form ID.
+	 */
+	private function add_entry_meta( $entry_id, $user_id, $form_id ) {
+
+		$entry_meta = wpforms()->get( 'entry_meta' );
+
+		$entry_meta->add(
+			[
+				'entry_id' => $entry_id,
+				'form_id'  => $form_id,
+				'user_id'  => get_current_user_id(),
+				'type'     => 'registered_user_id',
+				'data'     => $user_id,
+			]
+		);
 	}
 
 	/**

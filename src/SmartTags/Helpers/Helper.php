@@ -85,4 +85,31 @@ class Helper {
 
 		return false;
 	}
+
+	/**
+	 * Get registered user ID from entry ID.
+	 *
+	 * @since 2.6.0
+	 *
+	 * @param int $entry_id Entry ID.
+	 *
+	 * @return int Registered user ID.
+	 */
+	public static function get_entry_registered_user_id( $entry_id ) {
+
+		// Skip if entry ID is empty in case of login, registration or reset password form when entry is not created.
+		if ( empty( $entry_id ) ) {
+			return 0;
+		}
+
+		$registered_user_id = wpforms()->get( 'entry_meta' )->get_meta(
+			[
+				'entry_id' => $entry_id,
+				'type'     => 'registered_user_id',
+				'number'   => 1,
+			]
+		);
+
+		return $registered_user_id[0]->data ?? 0;
+	}
 }

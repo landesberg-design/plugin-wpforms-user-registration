@@ -27,8 +27,14 @@ class UserRegistrationLogin extends SmartTag {
 	 */
 	public function get_value( $form_data, $fields = [], $entry_id = '' ) {
 
+		$user_id = Helper::get_entry_registered_user_id( $entry_id );
+
+		if ( $user_id ) {
+			Helper::set_user( $user_id );
+		}
+
 		$user = Helper::get_user();
 
-		return $user ? $user->user_login : '';
+		return $user->user_login ?? '';
 	}
 }

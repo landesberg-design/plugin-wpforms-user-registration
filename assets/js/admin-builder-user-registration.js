@@ -95,8 +95,9 @@ var WPFormsUserRegistration = window.WPFormsUserRegistration || ( function( $ ) 
 			}
 
 			let hasErrors = false;
+			const $emailField = $( '#wpforms-panel-field-settings-registration_email' );
 
-			if ( $( '#wpforms-panel-field-settings-registration_email' ).val().trim().length === 0 ) {
+			if ( $emailField.length && $emailField.val().trim().length === 0 ) {
 				hasErrors = true;
 			}
 

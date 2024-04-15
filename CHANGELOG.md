@@ -1,6 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file, formatted via [this recommendation](https://keepachangelog.com/).
 
+## [2.6.0] - 2024-03-18
+### Changed
+- Minimum WPForms version supported is 1.8.7.
+
+### Fixed
+- In some cases, email mapping validation in the Form Builder could throw a JavaScript error and prevent saving the form.
+- User information was missing if Smart Tags were processed in the background via cron.
+- Compatibility with Google Sheets addon.
+- PHP notice and incorrect password reset link in the email when using the "User Password Reset Form" template.
+
+## [2.5.0] - 2024-01-09
+### Changed
+- The minimum supported WPForms version is 1.8.6.
+
+### Fixed
+- The encoded value of the Password field did not work with custom User Login Page.
+- The encoded value in the password did not work with the User Registration Form and Reset Password Form.
+
 ## [2.4.0] - 2023-11-08
 ### Added
 - Compatibility with WPForms 1.8.5.

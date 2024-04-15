@@ -36,7 +36,7 @@ class UserProcess {
 				continue;
 			}
 
-			$required_fields[ $nickname ] = $field['value'];
+			$required_fields[ $nickname ] = $nickname === 'password' ? $field['value_raw'] : $field['value'];
 		}
 
 		return $required_fields;
