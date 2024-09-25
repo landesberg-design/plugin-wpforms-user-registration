@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file, formatted via [this recommendation](https://keepachangelog.com/).
 
+## [2.7.0] - 2024-08-06
+### Changed
+- Minimum WPForms version supported is 1.9.0.
+- When a user follows the expired Reset Password link and submits the form, an email notification with a new link will be sent.
+
+### Fixed
+- Compatibility with WPForms 1.9.0.
+
 ## [2.6.0] - 2024-03-18
 ### Changed
 - Minimum WPForms version supported is 1.8.7.

@@ -73,7 +73,7 @@ class Registration extends WPForms_Template {
 				],
 			],
 			'settings' => [
-				'antispam'                    => '1',
+				'antispam_v3'                 => '1',
 				'ajax_submit'                 => '0',
 				'confirmation_message_scroll' => '1',
 				'registration_username'       => '2',

@@ -26,10 +26,10 @@ class Login extends WPForms_Template {
 		$this->modal       = '';
 		$this->core        = true;
 		$this->data        = [
-			'field_id' => '3',
+			'field_id' => '4',
 			'fields'   => [
-				'0' => [
-					'id'       => '0',
+				'1' => [
+					'id'       => '1',
 					'type'     => 'text',
 					'label'    => esc_html__( 'Username or Email', 'wpforms-user-registration' ),
 					'required' => '1',
@@ -39,8 +39,8 @@ class Login extends WPForms_Template {
 						'delete'   => false,
 					],
 				],
-				'1' => [
-					'id'       => '1',
+				'2' => [
+					'id'       => '2',
 					'type'     => 'password',
 					'label'    => esc_html__( 'Password', 'wpforms-user-registration' ),
 					'required' => '1',
@@ -50,8 +50,8 @@ class Login extends WPForms_Template {
 						'delete'   => false,
 					],
 				],
-				'2' => [
-					'id'         => '2',
+				'3' => [
+					'id'         => '3',
 					'type'       => 'checkbox',
 					'label'      => esc_html__( 'Remember me', 'wpforms-user-registration' ),
 					'required'   => '0',
@@ -74,7 +74,7 @@ class Login extends WPForms_Template {
 				'notification_enable'   => '0',
 				'disable_entries'       => '1',
 				'user_login_hide'       => '1',
-				'antispam'              => '1',
+				'antispam_v3'           => '1',
 				'ajax_submit'           => '0',
 			],
 			'meta'     => [

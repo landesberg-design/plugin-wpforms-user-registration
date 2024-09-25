@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'name' => 'wpforms/user-registration',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '8b876c253d539923c2ec3079e089bc63395c7a2c',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
+        'reference' => '31e3b0edc44b4f0fccf79b500d24cdf9da0dab9b',
+        'name' => 'wpforms/user-registration',
         'dev' => true,
     ),
     'versions' => array(
         'wpforms/user-registration' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '8b876c253d539923c2ec3079e089bc63395c7a2c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
+            'reference' => '31e3b0edc44b4f0fccf79b500d24cdf9da0dab9b',
             'dev_requirement' => false,
         ),
     ),

@@ -42,6 +42,10 @@ class UserRegistrationPasswordReset extends SmartTag {
 			return '';
 		}
 
+		// Remove invalid flag.
+		// It's needed if the user has tried to reset the password from the form with expired key.
+		$page_url = remove_query_arg( 'wpforms_rp_invalid', $page_url );
+
 		return esc_url(
 			add_query_arg(
 				[
